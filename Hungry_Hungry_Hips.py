@@ -1,17 +1,27 @@
 import random
-import Player
+import Game
+from Game import Player
+#
+# class Player:
+#     def __init__(self, name):
+#         self.name = name
+#         self.health = 10
+#         self.lives = 3
+#         self.items = []
+#         self.blanket_pieces = 3
 
-class Hungry_hippos(): b
+
+
+class Hungry_hippos(Player):
     def __init__(self):
         self.hippo_attack = 3
         self.pearls = 0
-        self.health = 0 #update this in boss_fight pre_bossfight
         self.hippo_pearls = 0
         self.hippo_story()
         self.play()
 
     def hippo_story(self):
-        print("""
+        print(r"""
 You open your eyes but you are surround by darkness… as you
 try to take a step forward, you realize there is no floor in front of
 you or on either side of you. A loud CLICK! A spotlight is on
@@ -55,15 +65,18 @@ controlling your hippo.
 """)
 
     def play(self):
-        self.pearls = 0
-        self.hippo_pearls = 0
-        while self.pearls < 10:
+        print('refiring play method')
+
+
+
+        while self.pearls < 10 and self.hippo_pearls < 10:
             quit = input("Q to Quit. Anyother key to continiue : ")
             if quit == "Q":
                 break
             else:
                 self.player_input()
-        if self.pearls > 9:
+
+        if self.pearls >= 10:
             print("YOU HAVE WON!")
             self.pearls = 10
             print(r""" THE HIPPO BEAST IS IMPRESSED
@@ -90,12 +103,12 @@ controlling your hippo.
 
             You have recived a golden pearl! """)
             self.chance_to_smooth_talk()
-        elif self.hippo_pearls > 9:
+        elif self.hippo_pearls >= 10:
             print("YOU HAVE LOST!")
-            choice = input("E. Play another round or B. Move forward in shame Type A or B: ")
-            if choice == 'B' or 'b':
+            choice = input("A. Play another round or B. Move forward in shame Type A or B: ").lower()
+            if choice == 'b':
                 self.chance_to_smooth_talk()
-            elif choice == 'E' or 'E':
+            elif choice == 'a':
                 self.pearls = 0
                 self.hippo_pearls = 0
                 self.play()
@@ -104,8 +117,8 @@ controlling your hippo.
         player_action = input("""Player1 _ what would you like to do?
         A. Jump
         B. Run away
-        Please type A or B for your action: """)
-        if player_action == 'A':
+        Please type A or B for your action: """).lower()
+        if player_action == 'a':
             #depending on your strength this will work
             print("You jumped!")
             self.battle_hippo()
@@ -113,26 +126,26 @@ controlling your hippo.
             print("You coward..jump...JUMP!")
 
     def battle_hippo(self):
-        if self.pearls < 9 and self.hippo_pearls < 9:
+        # if self.pearls < 9 and self.hippo_pearls < 9:
             #may want to give this a the player?
-            p1_pearl = random.randint(1, 9)
+            p1_pearl = random.randint(1, 2)
             self.pearls =  self.pearls + p1_pearl
             hippo_pearl = random.randint(1, 9)
             self.hippo_pearls =  self.hippo_pearls + hippo_pearl
             print(f"Hippo now has {self.hippo_pearls}")
             print(f"You now have {self.pearls}")
-        elif self.pearls > 9:
-            print("YOU HAVE WON!")
-            self.pearls = 10
-        elif self.hippo_pearls > 9:
-            print("YOU HAVE LOST!")
-            choice = input("A. Play another round or B. Move forward in shame Type A or B: ")
-            if choice == 'B' or 'b':
-                self.chance_to_smooth_talk()
-            elif choice == 'A' or 'a':
-                self.pearls = 0
-                self.hippo_pearls = 0
-                self.play()
+        # elif self.pearls > 9:
+        #     print("YOU HAVE WON!")
+        #     self.pearls = 10
+        # elif self.hippo_pearls > 9:
+        #     print("YOU HAVE LOST!")
+        #     choice = input("A. Play another round or B. Move forward in shame Type A or B: ")
+        #     if choice == 'B' or 'b':
+        #         self.chance_to_smooth_talk()
+        #     elif choice == 'A' or 'a':
+        #         self.pearls = 0
+        #         self.hippo_pearls = 0
+        #         self.play()
             #player.health - self.hippo_attack
 
 
@@ -207,22 +220,23 @@ controlling your hippo.
 
         You look an a piece of blanket appears in your left hand,
         a rainbow pearl appears in you right hand""")
-        print("The rainbow pearl seems to be cracking...")
-            #self.player get a piece of blanket.
-            #ENTER HALLWAY TO TELEPORT OUT FUN
-#         else: #is this the messed up line
-#             print("""
+        else:
+            print("The rainbow pearl seems to be cracking...")
+            # self.player get a piece of blanket.
+            # ENTER HALLWAY TO TELEPORT OUT FUN
+            #is this the messed up line
+            print("""
 
-#                    ／￣￣￣￣￣￣￣￣
-#                    |　HOW DARE YOU!!!
-#                    \_ ＿＿＿＿
-#                _.._  ∨
-#               (.--.)
-#        @______'\__/'
-#        (       /~~\.
-#         ||--||(.__.)
-#         '"  '" ~~~~  """)
-#             self.pre_bossfight()
+                   ／￣￣￣￣￣￣￣￣
+                   |　HOW DARE YOU!!!
+                   \_ ＿＿＿＿
+               _.._  ∨
+              (.--.)
+       @______'\__/'
+       (       /~~\.
+        ||--||(.__.)
+        '"  '" ~~~~  """)
+            self.pre_bossfight()
 
 
 
@@ -234,11 +248,11 @@ controlling your hippo.
             player_health = 10
             self.boss_fight()
         else:
-            print(f"Your health is at {player_health}")
+            print(f"{player1.name}'s health is at {player1.health}")
             self.boss_fight()
 
     def boss_fight(self):
-        player_health = 5
+        player1.health = 5
         print("YOU HAVE ANGER THE HUNGRY HIPPO NOW HE IS HANGRY!!!!!")
         print(r"""
   .-''''-. _
@@ -265,10 +279,10 @@ controlling your hippo.
         falling_pearls = 10
         while falling_pearls != 0:
             try:
-                where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, 3, 4 or 5"))
-                falling_pearl = random.randint(1,5)
+                where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, or 3"))
+                falling_pearl = random.randint(1,3)
                 if where_to_stand == falling_pearl:
-                    print("""
+                    print(r"""
 
  ● *BOnK
  O
@@ -285,18 +299,14 @@ controlling your hippo.
 / \  ____
                 """)
                     falling_pearls -= 1
-                if player_health > 1:
-                    print(r"""
-
-
-       @_______ ,_,
-       (       /ʘ"ʘ\
-        ||--||(_____)
-        '"  '"'-----'
-
+            except ValueError:
+                    print("Try a number 1-5")
+        if player1.health > 1:
+            print(r"""
 
                    ／￣￣￣￣￣￣￣￣
-                   |　SMALL HUMAN...you amsume me!!
+                   |　SMALL HUMAN...YOU BESTED ME!
+                   | take these items...
                    \_ ＿＿＿＿
                _.._  ∨
               (.--.)
@@ -307,15 +317,12 @@ controlling your hippo.
 
         You look an a piece of blanket appears in your left hand,
         a rainbow pearl appears in you right hand""")
-                else:
-                    print("GAME OVER YOU DIED...lol")
-            except ValueError:
-                print("Try a number 1-5")
+        else:
+            print("GAME OVER YOU DIED...lol")
 
 
 
             #do something if they die
-
-
+player1 = Game.Player('Bob')
 Hungry_hippos()
 #tame a hippo and busted thru a wall
