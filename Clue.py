@@ -1,7 +1,7 @@
 from random import randrange
-# from Game import Player
-#
-# player = Player("Patrick")
+from Game import Player
+
+player = Player("Patrick")
 
 
 class Clue:
@@ -15,8 +15,8 @@ class Clue:
         self.suspect = ""
         self.murderer = self.suspects[randrange(1, 5)]
         self.guesses = 3
-        # self.health = player.health
-        # self.blanket = player.blanket_pieces
+        self.health = player.health
+        self.blanket = player.blanket_pieces
         # self.guess = []
 
     def start(self):
@@ -79,6 +79,7 @@ What do you do?
     def victory(self):
         print(f"Good job! You got the murderer, {self.murderer}"
               "call the cops right away!")
+        player.blanket_pieces += 1
 
     def show_suspects(self):
         self.suspect = self.suspects[randrange(1, 5)]
@@ -87,9 +88,11 @@ What do you do?
             self.guesses -= 1
 
             if player_input == "r" and self.suspect != self.murderer:
-                print(f"You have: {self.guesses} your guess was: {self.suspect}")
+                print(
+                    f"You have: {self.guesses} your guess was: {self.suspect}")
             elif player_input == "r" and self.guesses == 0:
                 print(f"Sorry, {self.murderer} got away, you can't progress.")
+                player.health -= 2
                 player_input = input("Would you like to try again? y/n\n")
 
                 if player_input == "y":
