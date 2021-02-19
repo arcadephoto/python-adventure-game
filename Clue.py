@@ -1,18 +1,32 @@
 class Clue:
     def __init__(self):
-        self.suspects = ["Patrick", "Chad", "Sarah", "Gavin", "Billy"]
-        self.weapons = ["Candlestick", "Kitchen Knife", "Rope", "Poison"]
-        self.rooms = ["Foyer", "Living Room", "Dining Room", "Kitchen",
+        self.suspects = ["Patrick",
+                         "Chad",
+                         "Sarah",
+                         "Gavin",
+                         "Billy"]
+
+        self.weapons = ["Candlestick",
+                        "Kitchen Knife",
+                        "Rope",
+                        "Poison",
+                        "Statue"]
+
+        self.rooms = ["Foyer",
+                      "Living Room",
+                      "Dining Room",
+                      "Kitchen",
                       "Bathroom"]
+
         self.suspect = ""
         self.murder_weapon = ""
 
     def backstory(self):
-        print("""
+        print(f"""
 You hear a door close behind you as you open your eyes.
 You are in a room with 5 people. 
 It looks like they are having a party.
-[List of people]
+These are the suspects: {self.suspects}
 What do you do?
               """)
 
@@ -30,9 +44,15 @@ What do you do?
                 print("1. roll dice, 2. Hang out.")
                 if player_input == str(1):
                     #     TODO roll die
+                    print("Patrick turned out to be the culprit! "
+                          "He has your missing [item], "
+                          "and you can now use it to leave")
                     break
                 elif player_input == str(2):
-                    print("While hanging out you find out that the person ")
+                    print("While hanging out you find out that the person who "
+                          "died was killed by someone in the group. "
+                          "You need to solve who did it in order to find your"
+                          "missing items.")
                 break
 
 
