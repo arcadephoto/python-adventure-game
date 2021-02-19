@@ -2,9 +2,8 @@
 import random
 from connect_four import Connect_four
 from Hungry_Hungry_Hips import Hungry_hippos
-import Clue
+from Clue import Clue
 from simon import Simon
-
 
 connect = Connect_four()
 
@@ -38,10 +37,9 @@ class Game():
             if room_choice == 1:
                 connect.start(self.player)
             elif room_choice == 2:
-                self.lastroom = "hippo"
                 Hungry_hippos(self.player)
             elif room_choice == 3:
-                Clue(self.player)
+                Clue()
             elif room_choice == 4:
                 Simon(self.player)
             else:
@@ -155,9 +153,8 @@ class Game():
 
 
 
+# game = Game()
 
-game = Game()
-game.Game()
 
 
 
@@ -176,3 +173,4 @@ game.Game()
     #     You look down at your hand with $75 in your hand and can only think of
     #     the money you have now.
     #     """)
+Game()

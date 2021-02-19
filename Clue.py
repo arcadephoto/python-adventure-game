@@ -1,7 +1,4 @@
 from random import randrange
-from Game import Player
-
-player = Player("Patrick")
 
 
 class Clue:
@@ -15,8 +12,8 @@ class Clue:
         self.suspect = ""
         self.murderer = self.suspects[randrange(1, 5)]
         self.guesses = 3
-        self.health = player.health
-        self.blanket = player.blanket_pieces
+        # self.health = player.health
+        # self.blanket = player.blanket_pieces
         # self.guess = []
 
     def start(self):
@@ -79,7 +76,8 @@ What do you do?
     def victory(self):
         print(f"Good job! You got the murderer, {self.murderer}"
               "call the cops right away!")
-        player.blanket_pieces += 1
+        # player.blanket_pieces += 1
+
 
     def show_suspects(self):
         self.suspect = self.suspects[randrange(1, 5)]
@@ -112,6 +110,7 @@ What do you do?
             self.guesses = 0
             print("Goodbye, hope you had fun!")
 
+
     def area(self):
         player_input = input("1. Leave the house.\n2. Join the party\n")
         # game_redo = Clue()
@@ -123,5 +122,5 @@ What do you do?
                 self.second_choice()
 
 
-game = Clue()
-game.start()
+# game = Clue()
+# game.start()

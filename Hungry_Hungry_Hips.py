@@ -328,6 +328,7 @@ controlling your hippo.
         """)
             print(f"{player.name}'s health is {player.health}")
             player.blanket_pieces += 1
+            
         else:
             print(f"{player.name}'s health is {player.health}")
             print("GAME OVER YOU DIED...lol")

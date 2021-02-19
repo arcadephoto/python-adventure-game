@@ -173,6 +173,8 @@ You pick up a stone, and the game begins.
     HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
             '''
             print(msg)
+            player.blanket_pieces += 1
+
             player.rooms_completed = ['connect'] + player.rooms_completed
 
         # if input("Play again?") == "y":
@@ -225,6 +227,14 @@ You pick up a stone, and the game begins.
         else:
             print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
             self.play_again(player)
+
+
+        # if player.health <= 0:
+        #     player.death()
+        #     player.lastroom = "connect"
+        # else:
+        #     print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
+        #     self.play_again(player)
         return
 
     def play_again(self, player):
@@ -235,7 +245,7 @@ You pick up a stone, and the game begins.
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop(player)
 
-# # game = Game()
+# game = Game()
 # player = Player('Bob')
 # # four = Connect_four()
 # # drop_game = Drop_game() # mini game you're playing inside connect four
