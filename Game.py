@@ -45,13 +45,12 @@ class Game():
             print("game start command")
 
     def room(self):
-<<<<<<< HEAD
         if self.lastroom == "connect":
             four.column_one()
         if self.lastroom == "hippo":
             print("hippo start")
         if self.lastroom == "simon":
-            print("simon start")
+            from simon import Simon
         if self.lastroom == "clue":
             print("clue start")
         if self.lastroom == "ladders":
@@ -170,8 +169,6 @@ class Game():
             else:
                 print("WHAT! Take a chance! Shake the ball!")
                 self.eight_ball_word()
-=======
->>>>>>> 2d3021b (linked game and connect four)
 
         if self.player.lastroom == "connect":
             connect.start(self.player)
@@ -201,7 +198,7 @@ class Game():
 
 
 game = Game()
-game.play()
+# game.play()
 
 
 
