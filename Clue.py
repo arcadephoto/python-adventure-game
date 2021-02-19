@@ -44,7 +44,7 @@ What do you do?
             elif player_input == str(2):
                 print("They are talking about someone who died recently"
                       "that do you want to do? There is a die on the table.")
-                print("1. roll dice, 2. Hang out.")
+                print("1. roll die, 2. Hang out.")
                 if player_input == str(1):
                     #     TODO roll die
                     if self.suspect == self.suspects[0]:
