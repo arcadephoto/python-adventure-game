@@ -10,7 +10,9 @@ class Clue:
                          "Billy"]
 
         self.suspect = self.suspects[randrange(1, 5)]
+        self.murderer = self.suspects[randrange(1, 5)]
         # self.murder_weapon = self.weapons[randrange(1, 5)]
+        self.guesses = 3
         self.guess = []
 
     def backstory(self):
@@ -38,6 +40,16 @@ What do you do?
             print(i)
         print("The only way to determine who the correct person is, "
               "is to roll the dice on the table.")
+        print("What would you like to do?")
+        player_input = input("1. Leave for another room.\n2. Roll the die")
+
+        if player_input == str(1):
+            self.guesses = 0
+            print("Turns out the murderer was hanging out here, "
+                  "and decided to hit you in the head, and run away.")
+        elif player_input == str(2):
+            self.guesses -= 1
+            print(f"{self.guesses}", f"{self.suspect}", f"{self.murderer}")
 
     def area(self):
         player_input = input("1. Leave the house.\n2. Join the party\n")
