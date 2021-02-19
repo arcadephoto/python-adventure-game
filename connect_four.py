@@ -47,27 +47,46 @@ class Connect_four():
         pieces_in_play = 0
 
     def connect_four(self):
-        print("Ahead of you looms El Quatro, a stone structure reaching high into the darkness. It's a soaring tower with four parallel vertical channels.")
-        print('''In three of the channels, a massive stone disc has fallen and crushed the earth at the base of the tower. In the fourth channel stands
-        a pedestal with your name on it. Heh heh heh.''')
-        print("A voice booms from the darkness, 'Step up to your trial!'")
+        msg = """
+Ahead of you looms El Quatro, a stone structure reaching high into the darkness.
+It's a soaring tower with four parallelvvertical channels.
+In three of the channels, a massive stone disc has fallen and crushed
+the earth at the base of the tower. In the fourth channel stands a pedestal
+with your name on it.
+Heh heh heh.
+
+A voice booms from the darkness, 'Step up to your trial!'
+              """
+        print(msg)
         self.column_one()
 
 
     def column_one(self):
-        print("\nA voice booms from the darkness, 'This is the Trial of Stone! I'd say good luck, but I wouldn't mean it.'")
-        print()
-        print(f'''You approach the pedestal. It's a gray, cold stone and is oddly cracked and chipped,
-        as if it's been smashed to bits and glued back together dozens of times before.''')
-        print("Sitting on the pedestal is a simple wooden frame and a small pile of stone discs. Next to the frame is a tattered piece of paper.")
-        print("The paper reads: 'THESE ARE THE RULES'")
-        print("'Your goal is to place three stones on top of each other in a single column. The enemy will try to block you.''")
-        print("'You may not play on an X. If you reach the top, you win. If you run out of moves, you lose.''")
-        print("'Diagonals mean nothing. This isn't tic-tac-toe.''")
-        print("'Good luck. Hopefully this game doesn't crush your spirits.''")
-        print()
-        print("Ominously, the huge stone boulder swings high over your head.")
-        print("You pick up a stone, and the game begins.")
+        msg = """
+A voice booms from the darkness, 'This is the Trial of Stone! I'd say good
+luck, but I wouldn't mean it.'
+
+You approach the pedestal. It's a gray, cold stone and is oddly cracked and
+chipped, as if it's been smashed to bits and glued back together dozens of
+times before.
+Sitting on the pedestal is a simple wooden frame and a small pile of stone
+discs. Next to the frame is a tattered piece of paper.
+
+The paper reads: 'THESE ARE THE RULES'
+
+    - 'Your goal is to place three stones on top of each other in a
+        single column. The enemy will try to block you.''
+    - 'You may not play on an X. If you reach the top, you win. If
+        you run out of moves, you lose.'
+    - 'Diagonals mean nothing. This isn't tic-tac-toe.''")
+    - 'Good luck. Hopefully this game doesn't crush your spirits.'
+
+Ominously, the huge stone boulder swings high over your head.
+
+You pick up a stone, and the game begins.
+
+                """
+        print(msg)
         drop_game.activate_drop()
 
 
@@ -78,17 +97,23 @@ class Connect_four():
 class Connect_room():
 
     def start(self):
-        print(f'''
-        Darkness.\nSilence. \nYou are alone. And then light. You're in a spotlight - a white pillar reaching
-        up into the unfathomable darkness. Your breath ices in the freezing air. Motes of dust swirl in the light, drifting,
-        then come to rest on the ground next to a suspicious splotch of crusty dried ooze. The once-gray floor is stained the color of rust. And the air smells of, um, fear?
-        Death? Despair? No, the air smells like dead adventurer! Dead, crushed, minced, pureed, pulverized,
-        and otherwise formerly living mincemeat pie of once-hopeful game player.
-        Let's hope you make better choices, {player1.name}.
-        ''')
-        print('''
+        msg = (f'''
 
-        ''')
+You are alone. And then light. You're in a spotlight - a white pillar
+reaching up into the unfathomable darkness. Your breath ices in the
+freezing air. Motes of dust swirl in the light, drifting, then come to rest
+on the ground next to a suspicious splotch of crusty dried ooze.
+The once-gray floor is stained the color of rust. And the air smells of...
+fear? Despair?
+
+No, the air smells like dead adventurer! Dead, crushed, minced, pureed,
+pulverized, and otherwise formerly living mincemeat pie of once-hopeful
+game player.
+
+Let's hope you make better choices, {player1.name}.
+
+    ''')
+        print(msg)
         self.star_msg()
 
     def star_msg(self):
@@ -164,11 +189,21 @@ class Drop_game():
             print("It quickly adds, 'For you. If I win I win.'")
             self.play_again()
         elif self.wins == 2:
-            print("The booming invisible voice echoes through the cavern: 'You have triumphed! Now take your prize and scram!'")
-            print("Before you, the pedestals and stones and blood and crushed remains of previous competitors fade away, leaving behind a simple wooden table atop which sits a silver locket.")
-            print("You take the locket in hand. It feels solid and well-made. You press its latch, and it opens easily.")
-            print("The world fades away around you...")
-            print("HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
+            msg = '''
+
+    The booming invisible voice echoes through the cavern: 'You have
+    triumphed! Now take your prize and scram!'
+
+    Before you, the pedestals and stones and blood and crushed remains of
+    previous competitors fade away, leaving behind a simple wooden table atop
+    which sits a silver locket.
+    You take the locket in hand. It feels solid and well-made. You press
+    its latch, and it opens easily.
+    The world fades away around you...
+
+    HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
+            '''
+            print(msg)
             return
 
         # if input("Play again?") == "y":
