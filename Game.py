@@ -1,11 +1,8 @@
 # should this go in here?
 import random
-from connect_four import Connect_room
-from connect_four import Drop_game
+from connect_four import Connect_four
 
-
-connect = Connect_room()
-drop_game = Drop_game()
+connect = Connect_four()
 
 class Player():
     def __init__(self, name):
@@ -16,8 +13,6 @@ class Player():
         self.blanket_pieces = 0
         self.lastroom = ""
         self.rooms_completed = []
-
-
 
 
 class Game():
@@ -170,6 +165,7 @@ class Game():
             else:
                 print("WHAT! Take a chance! Shake the ball!")
                 self.eight_ball_word()
+<<<<<<< HEAD
 
         if self.player.lastroom == "connect":
             connect.start(self.player)
@@ -183,6 +179,8 @@ class Game():
         #     print("clue start")
         # if self.lastroom == "ladders":
         #     print("ladders start")
+=======
+>>>>>>> 4bb0fba (all one class)
 
     def play(self):
         print('playing game')
