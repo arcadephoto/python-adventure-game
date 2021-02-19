@@ -1,6 +1,6 @@
 import random
-import Game
-from Game import Player
+# import Game
+# from Game import Player
 #
 # class Player:
 #     def __init__(self, name):
