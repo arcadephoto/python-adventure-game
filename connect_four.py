@@ -5,6 +5,15 @@ import random
 # import Player
 # import game
 
+class Player():
+    def __init__(self, name):
+        self.name = name
+        self.health = 10
+        self.lives = 3
+        self.items = []
+        self.blanket_pieces = 0
+        self.lastroom = ""
+        self.rooms_completed = []
 
 class Connect_four():
 
@@ -49,14 +58,9 @@ You pick up a stone, and the game begins.
 
                 """
         print(msg)
-        drop_game.activate_drop(player)
+        self.activate_drop(player)
 
 
-
-
-
-
-class Connect_room():
 
     def start(self, player):
 
@@ -78,7 +82,7 @@ class Connect_room():
         ''')
         print(msg)
         if "mushroom" in player.items:
-            four.connect_four(player)
+            self.connect_four(player)
         else:
             self.star_msg(player)
 
@@ -89,15 +93,12 @@ class Connect_room():
             player.items.insert(0, "mushroom")
             print("You have added the MUSHROOM BADGE.")
 #           print(player.items)
-            four.connect_four(player)
+            self.connect_four(player)
         else:
             print("Just select Y, wise-ass.")
             self.star_msg(player)
 
 
-
-
-class Drop_game():
     def __init__(self):
         self.row1 = [".", "_", "_", "_", "_"]
         self.row2 = [".", "_", "_", "_", "_"]
@@ -215,7 +216,7 @@ class Drop_game():
                 self.activate_drop(player)
 
     def lost_game(self, player):
-        dmg = random.randint(20, 30)
+        dmg = random.randint(1, 3)
         print("\n")
         print("The massive stone plummets overhead. It strikes you, dealing", dmg, "points of damage!")
         player.health = player.health - dmg
@@ -235,10 +236,10 @@ class Drop_game():
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop(player)
 
-# game = Game.Game()
-# player = Game.Player('Bob')
-four = Connect_four()
-drop_game = Drop_game() # mini game you're playing inside connect four
-# connect = Connect_room() # welcome room
-# connect.start()
+# game = Game()
+player = Player('Bob')
+# four = Connect_four()
+# drop_game = Drop_game() # mini game you're playing inside connect four
+connect = Connect_four()
+connect.start(player)
 # drop_game.lost_game()
