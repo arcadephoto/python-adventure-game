@@ -197,7 +197,7 @@ controlling your hippo.
      `|__|~-----~|__|""")
 
         compliment_choice = input("The Hippo foruntley didn't hear you, what compliment would you like to say? ")
-        if "Nice" or "nice" or "hip" in compliment_choice:
+        if "nice" or "hip" in compliment_choice:
             print(r"""
 
        @_______ ,_,
@@ -221,19 +221,21 @@ controlling your hippo.
         print("The rainbow pearl seems to be cracking...")
             #self.player get a piece of blanket.
             #ENTER HALLWAY TO TELEPORT OUT FUN
-        else:
-            print("""
+#         else: #is this the messed up line
+#             print("""
 
-                   ／￣￣￣￣￣￣￣￣
-                   |　HOW DARE YOU!!!
-                   \_ ＿＿＿＿
-               _.._  ∨
-              (.--.)
-       @______'\__/'
-       (       /~~\.
-        ||--||(.__.)
-        '"  '" ~~~~  """)
-            self.pre_bossfight()
+#                    ／￣￣￣￣￣￣￣￣
+#                    |　HOW DARE YOU!!!
+#                    \_ ＿＿＿＿
+#                _.._  ∨
+#               (.--.)
+#        @______'\__/'
+#        (       /~~\.
+#         ||--||(.__.)
+#         '"  '" ~~~~  """)
+#             self.pre_bossfight()
+
+
 
     def pre_bossfight(self):
         player_health = 5
@@ -270,7 +272,7 @@ controlling your hippo.
         print("""You must dodge the falling pearls!
         The pearls are falling in tile spaces 1-5..
         To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
-        falling_pearls = 5
+        falling_pearls = 10
         while falling_pearls != 0:
             where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, 3, 4 or 5"))
             falling_pearl = random.randint(1,3)
@@ -292,6 +294,32 @@ controlling your hippo.
 / \  ____
                 """)
                 falling_pearls -= 1
+        if player_health > 1:
+              print(r"""
+
+
+       @_______ ,_,
+       (       /ʘ"ʘ\
+        ||--||(_____)
+        '"  '"'-----'
+
+
+                   ／￣￣￣￣￣￣￣￣
+                   |　SMALL HUMAN...you amsume me!!
+                   \_ ＿＿＿＿
+               _.._  ∨
+              (.--.)
+       @______'\__/'
+       (       /~~\.
+        ||--||(.__.)
+        '"  '" ~~~~
+
+        You look an a piece of blanket appears in your left hand,
+        a rainbow pearl appears in you right hand""")
+        else:
+            print("GAME OVER YOU DIED...lol")
+            #do something if they die
+
 
 Hungry_hippos()
 #tame a hippo and busted thru a wall
