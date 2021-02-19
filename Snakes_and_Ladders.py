@@ -80,6 +80,6 @@ class snakes_and_ladders():
 
 
 
-    def snake_bite(old_value, current_value, player_name):
+    def snake_bite(, current_value, player_name):
         print("\n" + random.choice(snake_bite).upper() + " ~~~~~~~~>")
         print("\n" + player_name + " got a snake bite. Down from " + str(self.health) + " to " + str()#####\ )
