@@ -236,10 +236,10 @@ You pick up a stone, and the game begins.
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop(player)
 
-# game = Game()
-player = Player('Bob')
-# four = Connect_four()
-# drop_game = Drop_game() # mini game you're playing inside connect four
-connect = Connect_four()
-connect.start(player)
+# # game = Game()
+# player = Player('Bob')
+# # four = Connect_four()
+# # drop_game = Drop_game() # mini game you're playing inside connect four
+# connect = Connect_four()
+# connect.start(player)
 # drop_game.lost_game()

@@ -1,9 +1,9 @@
 # should this go in here?
 import random
 from connect_four import Connect_four
-from connect_four import Connect_room
-from connect_four import Drop_game
 from Hungry_Hungry_Hips import Hungry_hippos
+import Clue
+import simon
 
 
 connect = Connect_four()
@@ -26,98 +26,6 @@ class Game():
         self.play()
 
 
-    def death(self):
-        print("You have died.")
-        if "mushroom" in self.player.items:
-            self.player.items.remove("mushroom")
-            print("But what's this? You have the silver mushroom! The mushroom disappears from your hand and you find yourself back where you were.")
-            self.room()
-        if self.player.lives > 0:
-            self.player.lives = self.player.lives - 1
-            print("But what's this? It seems you have", self.player.lives, "more lives to give. Good luck!")
-            self.room()
-        if self.player.lives == 0:
-            print("You have died and in real life, unlike video games, there are no do overs. Now press RETURN to do over!")
-            print("game start command")
-
-    def room(self):
-        if self.lastroom == "connect":
-            four.column_one()
-        if self.lastroom == "hippo":
-            print("hippo start")
-        if self.lastroom == "simon":
-            print("simon start")
-        if self.lastroom == "clue":
-            print("clue start")
-        if self.lastroom == "ladders":
-            print("ladders start")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def back_story(self):
         print(f"You're babysitting the 3-year-old son of Inventor Lampton, whose Helicopter will revolutionize aviation. You are {self.player.name}, financial sponsor of the Helicopter, who will back anything—with his father's money. There is also Colonel Annesley, who wants the Helicopter for the U.S. Government.\n\n...but those people have absolutely nothing to do with this story. I just told you about them to make this intro a bit longer. :3\n\nYou are reading the child a bedtime story and suddenly you    get sucked into the book. In order to escape the book world, you must get 5 blanket pieces, which each exist in one respective room.\n\nAs you are now a fictional character, if you die in the book world, the universe will forever forget you and you will be erased from existence.")
 
@@ -125,29 +33,17 @@ class Game():
     def play(self):
         while self.player.health > 0 or self.player.blanket_pieces == 5:
             print('playing game')
-            room_choice = random.randint(1,2)
+            room_choice = random.randint(1,4)
+            
             if room_choice == 1:
-                self.lastroom = "connect"
                 connect.start(self.player)
-                if not 'connect' in self.player.rooms_completed:
-                    if self.player.health <= 0:
-                        self.player.lastroom = "connect"
-                        self.death()
-                    else:
-                        print("You're hurt but, amazingly,you're   still alive. If you everwant to return to  the real world,you should try the game again.")
-                        drop_game.play_again(self.player)
-        # if room_choice == 2:
-        #     self.lastroom = "hippo"
-        #     Hungry_hippos(self.player)
             elif room_choice == 2:
                 self.lastroom = "hippo"
                 Hungry_hippos(self.player)
             elif room_choice == 3:
-                print("PATRICK")
-                Hungry_hippos(self.player)
+                Clue(self.player)
             elif room_choice == 4:
-                print("BILLY")
-                Hungry_hippos(self.player)
+                Simon(self.player)
             else:
                 print("GAVIN")
                 Hungry_hippos(self.player)

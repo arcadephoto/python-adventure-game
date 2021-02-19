@@ -1,6 +1,6 @@
 import time
 import random
-# from Game import Player
+import Player
 # from connect_four import Player
 
 # player = Player("Bob")
@@ -53,6 +53,7 @@ class Simon():
                     continue
                 else:
                     list_of_numbers.clear()
-        print("Dr. Longnameovich: Ah! I'm astounded! You actually won! Well, then, indeed I have learned a lot about the condition of scolactomemorandizitis. Here, I will give you this pearl. You may now be on your way!\n\n(Oh by the way, due to your condition and your age, you have 3 days left to live. Just a heads up...)")
+        print("Dr. Longnameovich: Ah! I'm astounded! You actually won! Well, then, indeed I have learned a lot about the condition of scolactomemorandizitis. Here, I will give you this blanket piece. You may now be on your way!\n\n(Oh by the way, due to your condition and your age, you have 3 days left to live. Just a heads up...)")
+        player.blanket_pieces += 1
 
 simon = Simon()
