@@ -1,3 +1,5 @@
+import random
+
 class Clue:
     def __init__(self):
         self.suspects = ["Patrick",
@@ -40,11 +42,12 @@ What do you do?
                 self.backstory()
                 player_input = input("1. Leave the house \n"
                                      " 2. Join the party\n")
+                # TODO convert logic into method.
                 break
             elif player_input == str(2):
                 print("They are talking about someone who died recently"
                       "that do you want to do? There is a die on the table.")
-                print("1. roll die, 2. Hang out.")
+                player_input = input("1. roll die, 2. Hang out.")
                 if player_input == str(1):
                     #     TODO roll die
                     if self.suspect == self.suspects[0]:
