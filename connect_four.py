@@ -27,7 +27,7 @@ class Player():
 
     def room(self):
         if self.lastroom == "connect":
-            four.connect_four()
+            four.column_one()
         if self.lastroom == "hippo":
             print("hippo start")
         if self.lastroom == "simon":
@@ -108,11 +108,11 @@ class Connect_room():
 
 class Drop_game():
     def __init__(self):
-        self.row1 = [".", "_", "_", "_"]
-        self.row2 = [".", "_", "_", "_"]
-        self.row3 = [".", "_", "_", "_"]
+        self.row1 = [".", "_", "_", "_", "_"]
+        self.row2 = [".", "_", "_", "_", "_"]
+        self.row3 = [".", "_", "_", "_", "_"]
         self.game_over = False
-        self.blocked = ["_", "_", "_"]
+        self.blocked = ["_", "_", "_", "_"]
         self.wins = 0
 
 
@@ -137,8 +137,8 @@ class Drop_game():
                     self.game_over = True
                     return
             else:
-                print("That row is full. The game is over")
-                return
+                print("That row is full. Please choose another")
+                self.activate_drop()
             print(*self.row1, sep=" ")
             print(*self.row2, sep=" ")
             print(*self.row3, sep=" ")
@@ -150,11 +150,11 @@ class Drop_game():
         print(*self.row1, sep=" ")
         print(*self.row2, sep=" ")
         print(*self.row3, sep=" ")
-        if self.blocked == ["X", "X", "X"]:
+        if self.blocked == ["X", "X", "X", "X"]:
             print("All ways up are blocked. The horrible enemy is victorious!")
             self.lost_game()
             return;
-        i = input("Pick a column, 1-3:   ")
+        i = input("Pick a column, 1-4:   ")
         self.drop(int(i))
 
     def win_game(self):
@@ -169,13 +169,14 @@ class Drop_game():
             print("You take the locket in hand. It feels solid and well-made. You press its latch, and it opens easily.")
             print("The world fades away around you...")
             print("HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
+            return
 
         # if input("Play again?") == "y":
         #     self.play_again()
 
 
     def computer_turn(self):
-        i = random.randint(1, 3)
+        i = random.randint(1, 4)
         print("The mysterious foe has chosen Column", i,".")
         print("A stone materializes in the air and drops into the game board")
         if self.blocked[int(i-1)] == "_":
@@ -188,7 +189,7 @@ class Drop_game():
                 self.row3[slot] = "X"
             elif self.row2[slot] == "_":
                 self.row2[slot] = "X"
-                if self.row2 == [".", "X", "X", "X"]:
+                if self.row2 == [".", "X", "X", "X", "X"]:
                     print("Oh no! The cruel enemy has blocked all your moves. You lost!")
                     self.game_over = True
                     self.lost_game()
@@ -196,13 +197,15 @@ class Drop_game():
             elif self.row1[slot] == "_":
                 self.row1[slot] = "X"
                 print("Your foe has blocked column", slot, "!")
-                if self.row2 == [".", "X", "X", "X"]:
+                if self.row2 == [".", "X", "X", "X", "X"]:
                     print("Oh no! The cruel enemy has blocked all your moves. You lost!")
                     self.game_over = True
                     self.lost_game()
                     return
             else:
-                print("The foe has chosen an unplayable row. Make your move!")
+                print("That row was occupied, so the enemy chooses again. What a jerk!")
+                self.computer_turn()
+                # print("The foe has chosen an unplayable row. Make your move!")
 #             print(*self.row1, sep=" ")
 #             print(*self.row2, sep=" ")
 #             print(*self.row3, sep=" ")
@@ -214,7 +217,7 @@ class Drop_game():
         dmg = random.randint(6, 12)
         print("\n")
         print("The massive stone plummets overhead. It strikes you, dealing", dmg, "points of damage!")
-        player1.health = player1.health - 10
+        player1.health = player1.health - dmg
         if player1.health <= 0:
             player1.death()
             player1.lastroom = "connect"
@@ -223,10 +226,10 @@ class Drop_game():
             self.play_again()
 
     def play_again(self):
-        self.row1 = [".", "_", "_", "_"]
-        self.row2 = [".", "_", "_", "_"]
-        self.row3 = [".", "_", "_", "_"]
-        self.blocked = ["_", "_", "_"]
+        self.row1 = [".", "_", "_", "_", "_"]
+        self.row2 = [".", "_", "_", "_", "_"]
+        self.row3 = [".", "_", "_", "_", "_"]
+        self.blocked = ["_", "_", "_", "_"]
         self.activate_drop()
 
 
