@@ -34,7 +34,7 @@ class Game():
         while self.player.health > 0 or self.player.blanket_pieces == 5:
             print('playing game')
             room_choice = random.randint(1,4)
-            
+
             if room_choice == 1:
                 connect.start(self.player)
             elif room_choice == 2:
@@ -122,6 +122,27 @@ class Game():
     ______________________
             """)
             self.shake_ball()
+        def shake_ball(self):
+            shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
+            if shake_eight_ball == "Y":
+                room = random.randint(1,6)
+            else:
+                print("WHAT! Take a chance! Shake the ball!")
+                self.eight_ball_word()
+
+        if self.player.lastroom == "connect":
+            connect.start(self.player)
+
+        print('''You din't lose the connect ''')
+        # if self.lastroom == "hippo":
+        #     print("hippo start")
+        # if self.lastroom == "simon":
+        #     print("simon start")
+        # if self.lastroom == "clue":
+        #     print("clue start")
+        # if self.lastroom == "ladders":
+        #     print("ladders start")
+
 
     def shake_ball(self):
         shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")

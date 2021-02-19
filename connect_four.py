@@ -220,12 +220,11 @@ You pick up a stone, and the game begins.
         print("\n")
         print("The massive stone plummets overhead. It strikes you, dealing", dmg, "points of damage!")
         player.health = player.health - dmg
-        # if player.health <= 0:
-        #     player.death()
-        #     player.lastroom = "connect"
-        # else:
-        #     print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
-        #     self.play_again(player)
+        if player.health <= 0:
+            print("You died!")
+        else:
+            print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
+            self.play_again(player)
         return
 
     def play_again(self, player):
