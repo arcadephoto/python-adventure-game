@@ -1,22 +1,11 @@
 import random
+import Player
 
-class Player():
-    def __init__(self, name):
-        self.name = name
-        self.health = 10
-        self.lives = 3
-        self.items = []
-        self.blanket_pieces = 3
-
-        def death(self):
-            print("We need to some code for what happens if the character loses all three lives")
-
-
-
-class Hungry_hippos():
+class Hungry_hippos(): b
     def __init__(self):
         self.hippo_attack = 3
         self.pearls = 0
+        self.health = 0 #update this in boss_fight pre_bossfight
         self.hippo_pearls = 0
         self.hippo_story()
         self.play()
@@ -79,7 +68,7 @@ controlling your hippo.
             self.pearls = 10
             print(r""" THE HIPPO BEAST IS IMPRESSED
 
-                                 .^.,*.
+                     .^.,*.
                     (   )  )
                    .~       "-._   _.-'-*'-*'-*'-*'-'-.--._
                  /'             `"'                        `.
@@ -103,10 +92,10 @@ controlling your hippo.
             self.chance_to_smooth_talk()
         elif self.hippo_pearls > 9:
             print("YOU HAVE LOST!")
-            choice = input("A. Play another round or B. Move forward in shame Type A or B: ")
+            choice = input("E. Play another round or B. Move forward in shame Type A or B: ")
             if choice == 'B' or 'b':
                 self.chance_to_smooth_talk()
-            elif choice == 'A' or 'a':
+            elif choice == 'E' or 'E':
                 self.pearls = 0
                 self.hippo_pearls = 0
                 self.play()
@@ -238,7 +227,7 @@ controlling your hippo.
 
 
     def pre_bossfight(self):
-        player_health = 5
+
         health_boost_choice = input("Would you like to use your golden pearl now? Y/N ")
         if health_boost_choice == "Y" or "Yes":
             print("Your health has been restored!")
@@ -249,6 +238,7 @@ controlling your hippo.
             self.boss_fight()
 
     def boss_fight(self):
+        player_health = 5
         print("YOU HAVE ANGER THE HUNGRY HIPPO NOW HE IS HANGRY!!!!!")
         print(r"""
   .-''''-. _
@@ -274,28 +264,29 @@ controlling your hippo.
         To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
         falling_pearls = 10
         while falling_pearls != 0:
-            where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, 3, 4 or 5"))
-            falling_pearl = random.randint(1,3)
-            if where_to_stand == falling_pearl:
-                print("""
+            try:
+                where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, 3, 4 or 5"))
+                falling_pearl = random.randint(1,5)
+                if where_to_stand == falling_pearl:
+                    print("""
 
  ● *BOnK
  O
 /|\
 / \
                 """)
-                falling_pearls -= 1
-            else:
-                print("""
+                    falling_pearls -= 1
+                else:
+                    print("""
 
   *DOgdE
  O   ____
 /|\  _     ●
 / \  ____
                 """)
-                falling_pearls -= 1
-        if player_health > 1:
-              print(r"""
+                    falling_pearls -= 1
+                if player_health > 1:
+                    print(r"""
 
 
        @_______ ,_,
@@ -316,8 +307,13 @@ controlling your hippo.
 
         You look an a piece of blanket appears in your left hand,
         a rainbow pearl appears in you right hand""")
-        else:
-            print("GAME OVER YOU DIED...lol")
+                else:
+                    print("GAME OVER YOU DIED...lol")
+            except ValueError:
+                print("Try a number 1-5")
+
+
+
             #do something if they die
 
 
