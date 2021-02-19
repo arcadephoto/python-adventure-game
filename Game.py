@@ -17,20 +17,6 @@ class Player():
         self.rooms_completed = []
 
 
-    # def death(self):
-    #     print("You have died.")
-    #     if "mushroom" in self.items:
-    #         self.items.remove("mushroom")
-    #         print("But what's this? You have the silver mushroom! The mushroom disappears from your hand and you find yourself back where you were.")
-    #         self.room()
-    #     if self.lives > 0:
-    #         self.lives = self.lives - 1
-    #         print("But what's this? It seems you have", self.lives, "more lives to give. Good luck!")
-    #         self.room()
-    #     if self.lives == 0:
-    #         print("You have died and in real life, unlike video games, there are no do overs. Now press RETURN to do over!")
-    #         print("game start command")
-
 
 
 class Game():
@@ -59,6 +45,7 @@ class Game():
             print("game start command")
 
     def room(self):
+<<<<<<< HEAD
         if self.lastroom == "connect":
             four.column_one()
         if self.lastroom == "hippo":
@@ -183,6 +170,8 @@ class Game():
             else:
                 print("WHAT! Take a chance! Shake the ball!")
                 self.eight_ball_word()
+=======
+>>>>>>> 2d3021b (linked game and connect four)
 
         if self.player.lastroom == "connect":
             connect.start(self.player)
@@ -213,3 +202,21 @@ class Game():
 
 game = Game()
 game.play()
+
+
+
+    # def ending_story(self):
+    #     print("""As you come too.. you realize your sitting in a chair with a book in your hand. Comfort overcomes you as your realize you are in the
+    #     bedroom of childs name. The child is at your side grabbing for what seems
+    #     to be a blanket. You hand over the blanket.
+    #     The child rubs their eyes and crawls back into bed. The child says, "Thank you
+    #     for the wonderful adventure story".
+    #     As the child tumbles into slumber... you begin to ask yourself about the
+    #     past events... You swore that blanket was in 5 pieces... that you were never ..not in danger of death... yet....
+    #     You hear a door open...YOU JUMP UP. Ready for a fight.. it's two human adults you recongize.
+    #     They are rushing towards you with... with..with money in their hands. Thank youing for getting
+    #     their child to sleep. Ushering you out the door and thank youing for a great
+    #     job of babysitting.
+    #     You look down at your hand with $75 in your hand and can only think of
+    #     the money you have now.
+    #     """)
