@@ -65,14 +65,51 @@ child and it clicks in your head that the lever is
 controlling your hippo.
 """)
 
-
     def play(self):
+        self.pearls = 0
+        self.hippo_pearls = 0
         while self.pearls < 10:
             quit = input("Q to Quit. Anyother key to continiue : ")
             if quit == "Q":
                 break
             else:
                 self.player_input()
+        if self.pearls > 9:
+            print("YOU HAVE WON!")
+            self.pearls = 10
+            print(r""" THE HIPPO BEAST IS IMPRESSED
+
+                                 .^.,*.
+                    (   )  )
+                   .~       "-._   _.-'-*'-*'-*'-*'-'-.--._
+                 /'             `"'                        `.
+               _/'                                           `.
+          __,""    ʘ                                            ).--.
+       .-'       `._.'                                          .--.\
+      '                                                         )   \`:
+     ;                                                          ;    "
+    :                                                           )
+    | 8                                                        ;
+     =                  )                                     .
+      \                .                                    .'
+      ● `.            ~  \                                .-'
+    O//     `-._ _ _ . '    `.          ._        _        |
+    |                       |        /  `"-*--*' |       |
+   / \                      |        |           |       :
+ -------------------------------------------------------------------------------
+
+
+            You have recived a golden pearl! """)
+            self.chance_to_smooth_talk()
+        elif self.hippo_pearls > 9:
+            print("YOU HAVE LOST!")
+            choice = input("A. Play another round or B. Move forward in shame Type A or B: ")
+            if choice == 'B' or 'b':
+                self.chance_to_smooth_talk()
+            elif choice == 'A' or 'a':
+                self.pearls = 0
+                self.hippo_pearls = 0
+                self.play()
 
     def player_input(self):
         player_action = input("""Player1 _ what would you like to do?
@@ -91,18 +128,108 @@ controlling your hippo.
             #may want to give this a the player?
             p1_pearl = random.randint(1, 9)
             self.pearls =  self.pearls + p1_pearl
-            hippo_pearl = random.randint(1, 3)
+            hippo_pearl = random.randint(1, 9)
             self.hippo_pearls =  self.hippo_pearls + hippo_pearl
             print(f"Hippo now has {self.hippo_pearls}")
             print(f"You now have {self.pearls}")
         elif self.pearls > 9:
             print("YOU HAVE WON!")
             self.pearls = 10
-        elif self.hippo_pearls < 9:
+        elif self.hippo_pearls > 9:
             print("YOU HAVE LOST!")
+            choice = input("A. Play another round or B. Move forward in shame Type A or B: ")
+            if choice == 'B' or 'b':
+                self.chance_to_smooth_talk()
+            elif choice == 'A' or 'a':
+                self.pearls = 0
+                self.hippo_pearls = 0
+                self.play()
             #player.health - self.hippo_attack
 
 
+
+    def chance_to_smooth_talk(self):
+        print("You have a pearl in hand...")
+        gold_pearl_choice = input("""What will you do with the pearl
+                                    A. Chuck the pearl at hippo
+                                    B. Pocket it for later
+                                    Type A or B: """)
+        if gold_pearl_choice == "A":
+            self.pre_bossfight()
+        else:
+            print("Smart choice!")
+            print("You see the a hallway on the other side of the room..Right when the Hippo steps into your view.")
+            smooth_talk_choice = input("""Hippo is staring blankly at you...
+            then ROARS SMALL HUMAN... best me at one more game and I shall give you the item
+            you seek!
+            A. Play a game with Hippo
+            B. Try to compliment the Hippo
+            C. Run for hallway
+            Type A B or C""")
+            if smooth_talk_choice == 'A':
+                self.pre_bossfight()
+                #random number guessing game
+            elif smooth_talk_choice == 'B':
+                self.pre_bossfight()
+                #random choice pick of best compliment with inputs
+            else:
+                self.pre_bossfight()
+
+    def pre_bossfight():
+        player.health = 5
+        health_boost_choice = input("Would you like to use your golden pearl now? Y/N ")
+        if health_boost_choice == "Y" or "Yes":
+            print("Your health has been restored!")
+            player.health = 10
+            self.boss_fight()
+        else:
+            print(f"Your health is at {player.health}")
+            self.boss_fight()
+
+    def boss_fight():
+        print("YOU HAVE ANGER THE HUNGRY HIPPO NOW HE IS HANGRY!!!!!")
+        print(r"""
+  .-''''-. _
+ ('    '  '0)-/)
+ '..____..:    \._
+   \u  u (        '-..------._
+   |     /      :   '.        '--.
+  .nn_nn/ (      :   '            '\
+ ( '' '' /      ;     .             \
+  ''----' "\          :            : '.
+         .'/                           '.
+  | |    / /                             '.
+   |    /_|       )                     .\|
+   ●     |      /\                     . '
+         '--.__|  '--._  ,            /
+                      /'-,          .'
+ ?                   /   |        _.'
+ O                   (____\       /
+/|\                        \      \
+/ \                         '-'-'-' """)
+        print("""You must dodge the falling pearls!
+        The pearls are falling in tile spaces 1-5..
+        To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
+        falling_pearls = 5
+        while falling_pearls != 0:
+            where_to_stand = input("Pick a tile 1-5 to dodge the falling pearl by typing 1, 2, 3, 4 or 5")
+            falling_pearl = random.randint(1,6)
+            if where_to_stand == falling_pearl:
+                print("""
+
+ ● *BOnK
+ O
+/|\
+/ \
+                """)
+            else:
+                print("""
+
+  *DOgdE
+ O   ____
+/|\  _     ●
+/ \  ____
+                """)
+
 Hungry_hippos()
 #tame a hippo and busted thru a wall
-#
