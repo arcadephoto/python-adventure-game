@@ -18,8 +18,9 @@ class Clue:
                       "Kitchen",
                       "Bathroom"]
 
-        self.suspect = ""
-        self.murder_weapon = ""
+        self.suspect = self.suspects[0]
+        self.murder_weapon = self.weapons[3]
+        self.guess = []
 
     def backstory(self):
         print(f"""
@@ -32,11 +33,13 @@ What do you do?
 
     def area(self):
         player_input = input("1. Leave the house.\n2. Join the party\n")
-
-        while self.murder_weapon == "" and self.suspect == "":
+        while not self.guess:
             if player_input == str(1):
                 print("The front door refuses to open, "
                       "and you wind up in the party room again.")
+                self.backstory()
+                player_input = input("1. Leave the house \n"
+                                     " 2. Join the party\n")
                 break
             elif player_input == str(2):
                 print("They are talking about someone who died recently"
@@ -44,10 +47,13 @@ What do you do?
                 print("1. roll dice, 2. Hang out.")
                 if player_input == str(1):
                     #     TODO roll die
-                    print("Patrick turned out to be the culprit! "
-                          "He has your missing [item], "
-                          "and you can now use it to leave")
+                    if self.suspect == self.suspects[0]:
+                        print(f"{self.suspect[0]} turned out to be the culprit! "
+                              "Quick call the police and have him arrested!"
+                              "He has your missing [item], "
+                              "and you can now use it to leave.")
                     break
+
                 elif player_input == str(2):
                     print("While hanging out you find out that the person who "
                           "died was killed by someone in the group. "
