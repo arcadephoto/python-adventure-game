@@ -234,6 +234,4 @@ player1 = Player('Bob')
 four = Connect_four()
 drop_game = Drop_game()
 connect = Connect_room()
-# connect.start()
-player1.lastroom = "connect"
-player1.death()
+connect.start()
