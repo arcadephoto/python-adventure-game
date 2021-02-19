@@ -3,6 +3,7 @@ import random
 from connect_four import Connect_room
 from connect_four import Drop_game
 
+
 connect = Connect_room()
 drop_game = Drop_game()
 
@@ -50,7 +51,7 @@ class Game():
         if self.lastroom == "hippo":
             print("hippo start")
         if self.lastroom == "simon":
-            from simon import Simon
+            print("simon start")
         if self.lastroom == "clue":
             print("clue start")
         if self.lastroom == "ladders":
