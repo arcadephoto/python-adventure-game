@@ -1,14 +1,15 @@
 import time
 import random
-import Player
+# from Game import Player
 # from connect_four import Player
 
 # player = Player("Bob")
 
 class Simon():
-    def __init__(self):
-        health = 10
-        print("You have stumbled across an insane evil scientist named Dr. Heinz Longnameovich, who is bent on understanding the workings of the human mind. He has kidnapped you so that he can undertake a psychological experiment on you. The scientist is hoping to find someone with the ability to get through 5 rounds of Simon without guessing something wrong, because such an individual would have the rare condition known as 'scolactomemorandizitis'. He ties you to a chair and makes you play the game, and if you win, you will get something very special. If you get a wrong answer, he shocks you with his machine and that takes away 2 health. If you lose though, he kills you.\n\nDr. Longnameovich: Okay, here's how to play. Memorize each number I spurt out at you, and repeat them back to me, in order.\n")
+    def __init__(self, player):
+        self.player = player
+        player.health = 10
+        print("You have stumbled across an insane evil scientist named Dr. Heinz Longnameovich, who is bent on understanding the workings of the human mind. He has kidnapped you so that he can undertake a psychological experiment on you. The scientist is hoping to find someone with the ability to get through 5 rounds of Simon without guessing something wrong, because such an individual would have the rare condition known as 'scolactomemorandizitis'. He ties you to a chair and makes you play the game, and if you win, you will get something very special. If you get a wrong answer, he shocks you with his machine and that takes away 2 player.health. If you lose though, he kills you.\n\nDr. Longnameovich: Okay, here's how to play. Memorize each number I spurt out at you, and repeat them back to me, in order.\n")
 
         start_game = input("Dr. Longnameovich: Press any button to begin. ")
 
@@ -42,8 +43,8 @@ class Simon():
                         print("Dr. Longnameovich: Why, you got one wrong. BZZZZZRRRTTT!!")
                         time.sleep(2)
                         lost = True
-                        health -= 2
-                        if health <= 0:
+                        player.health -= 1
+                        if player.health <= 0:
                             print("You died resulting from electric shock.")
                             exit()
                         else:
@@ -56,4 +57,4 @@ class Simon():
         print("Dr. Longnameovich: Ah! I'm astounded! You actually won! Well, then, indeed I have learned a lot about the condition of scolactomemorandizitis. Here, I will give you this blanket piece. You may now be on your way!\n\n(Oh by the way, due to your condition and your age, you have 3 days left to live. Just a heads up...)")
         player.blanket_pieces += 1
 
-simon = Simon()
+# simon = Simon()

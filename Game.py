@@ -3,7 +3,7 @@ import random
 from connect_four import Connect_four
 from Hungry_Hungry_Hips import Hungry_hippos
 import Clue
-import simon
+from simon import Simon
 
 
 connect = Connect_four()
