@@ -1,12 +1,10 @@
 # should this go in here?
 import random
-<<<<<<< HEAD
 from connect_four import Connect_four
-=======
 from connect_four import Connect_room
 from connect_four import Drop_game
 from Hungry_Hungry_Hips import Hungry_hippos
->>>>>>> updated game
+
 
 connect = Connect_four()
 
