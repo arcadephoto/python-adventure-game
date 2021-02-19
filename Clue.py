@@ -1,5 +1,5 @@
 from random import randrange
-
+import Player
 
 class Clue:
     def __init__(self):
@@ -62,7 +62,12 @@ What do you do?
     def show_suspects(self):
         self.guesses -= 1
         self.suspect = self.suspects[randrange(1, 5)]
-        print(f"{self.guesses}", f"{self.suspect}", f"{self.murderer}")
+        if self.guesses > 0:
+            player_input = input("Roll the dice by pressing r.")
+            if player_input == "r" and self.suspect != self.murderer:
+                print(f"{self.guesses}", f"{self.suspect}", f"{self.murderer}")
+            elif player_input == "r" and self.guesses == 0:
+                print("Sorry, the murderer got away, you can't progress.")
 
     def game_over(self):
         self.guesses = 0
@@ -80,8 +85,10 @@ What do you do?
                 self.second_choice()
 
 
-game = Clue()
+# game = Clue()
+#
+# game.backstory()
+#
+# game.area()
 
-game.backstory()
-
-game.area()
+print(Player)
