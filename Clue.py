@@ -1,9 +1,11 @@
 from random import randrange
 import Player
 
+player = Player.Player("Patrick")
+
 class Clue:
     def __init__(self):
-        self.suspects = ["Patrick",
+        self.suspects = [player.name,
                          "Chad",
                          "Sarah",
                          "Gavin",
@@ -12,6 +14,7 @@ class Clue:
         self.suspect = self.suspects[randrange(1, 5)]
         self.murderer = self.suspects[randrange(1, 5)]
         self.guesses = 3
+        self.health = player.health
         self.guess = []
 
     def backstory(self):
@@ -85,10 +88,8 @@ What do you do?
                 self.second_choice()
 
 
-# game = Clue()
-#
-# game.backstory()
-#
-# game.area()
+game = Clue()
 
-print(Player)
+game.backstory()
+
+game.area()
