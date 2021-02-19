@@ -1,4 +1,6 @@
 import random
+import Game
+import Player
 # import game
 
 # class Player():
@@ -273,8 +275,8 @@ class Drop_game():
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop()
 
-
-player1 = Player('Bob')
+game = Game.Game()
+player1 = Player.Player('Bob')
 four = Connect_four()
 drop_game = Drop_game()
 connect = Connect_room()

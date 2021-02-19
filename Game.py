@@ -1,5 +1,18 @@
 # should this go in here?
 
+
+class Player():
+    def __init__(self, name):
+        self.name = name
+        self.health = 10
+        self.lives = 3
+        self.items = []
+        self.blanket_pieces = 0
+        self.lastroom = ""
+
+
+class Game():
+
     def death(self):
         print("You have died.")
         if "mushroom" in self.items:
