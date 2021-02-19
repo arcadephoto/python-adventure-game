@@ -14,6 +14,7 @@ from Game import Player
 
 class Hungry_hippos(Player):
     def __init__(self):
+        self.hippo_damage = 2
         self.hippo_attack = 3
         self.pearls = 0
         self.hippo_pearls = 0
@@ -21,10 +22,11 @@ class Hungry_hippos(Player):
         self.play()
 
     def hippo_story(self):
-        print(r"""
-You open your eyes but you are surround by darkness… as you
+
+        print("""
+You open your eyes but you are surround by darkness... as you
 try to take a step forward, you realize there is no floor in front of
-you or on either side of you. A loud CLICK! A spotlight is on
+you or on either sidxe of you. A loud CLICK! A spotlight is on
 you! You look below you and you are on a black levers that seems
 to be attached to a hot pink blob. Over a loud speaker you hear.
 It's a race, it's a chase, hurry up and feed their face! Who will
@@ -102,9 +104,13 @@ controlling your hippo.
 
 
             You have recived a golden pearl! """)
+            print(f"{player1.name}'s health is {player1.health}")
+            player1.items.push("golden-pearl")
             self.chance_to_smooth_talk()
         elif self.hippo_pearls >= 10:
             print("YOU HAVE LOST!")
+            player1.health = player1.health - (self.hippo_damage * 2)
+            print(f"{player1.name} you have {player1.health}")
             choice = input("A. Play another round or B. Move forward in shame Type A or B: ").lower()
             if choice == 'b':
                 self.chance_to_smooth_talk()
@@ -241,18 +247,20 @@ controlling your hippo.
 
 
     def pre_bossfight(self):
-
-        health_boost_choice = input("Would you like to use your golden pearl now? Y/N ")
-        if health_boost_choice == "Y" or "Yes":
-            print("Your health has been restored!")
-            player_health = 10
-            self.boss_fight()
+        if "golden-pearl" in player1.items:
+            health_boost_choice = input("Would you like to use your golden pearl now? Y/N ")
+            if health_boost_choice == "Y" or "Yes":
+                print("Your health has been restored!")
+                player_health = 10
+                self.boss_fight()
+            else:
+                print(f"{player1.name}'s health is at {player1.health}")
+                self.boss_fight()
         else:
             print(f"{player1.name}'s health is at {player1.health}")
             self.boss_fight()
 
     def boss_fight(self):
-        player1.health = 5
         print("YOU HAVE ANGER THE HUNGRY HIPPO NOW HE IS HANGRY!!!!!")
         print(r"""
   .-''''-. _
@@ -278,19 +286,20 @@ controlling your hippo.
         To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
         falling_pearls = 10
         while falling_pearls != 0:
-            try:
-                where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, or 3"))
-                falling_pearl = random.randint(1,3)
-                if where_to_stand == falling_pearl:
-                    print(r"""
+            # try:
+            where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, or 3"))
+            falling_pearl = random.randint(1,3)
+            if where_to_stand == falling_pearl:
+                print(r"""
 
  ● *BOnK
  O
 /|\
 / \
                 """)
-                    falling_pearls -= 1
-                else:
+                player1.health = player1.health - self.hippo_damage
+                falling_pearls -= 1
+            else:
                     print("""
 
   *DOgdE
@@ -299,8 +308,8 @@ controlling your hippo.
 / \  ____
                 """)
                     falling_pearls -= 1
-            except ValueError:
-                    print("Try a number 1-5")
+            # except ValueError:
+            #         print("Try a number 1-5")
         if player1.health > 1:
             print(r"""
 
@@ -317,7 +326,9 @@ controlling your hippo.
 
         You look an a piece of blanket appears in your left hand,
         a rainbow pearl appears in you right hand""")
+            print(f"{player1.name}'s health is {player1.health}")
         else:
+            print(f"{player1.name}'s health is {player1.health}")
             print("GAME OVER YOU DIED...lol")
 
 

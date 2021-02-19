@@ -13,6 +13,35 @@ class Player():
 
 class Game():
 
+    def eight_ball_word(self):
+        print("""
+What seems to be a doorless hallway is in front of you.
+You walk down the hallway...approaching what seems to be
+an eight ball...on a table?
+
+       ******
+    ,dP9CGG8888@b,
+  ,IP  _   Y88888@@b,
+ dIi  (_)   G888898@b
+dCII  (_)   G888888@@b
+GCCIi     ,GG888888@@@
+GGCCCCCCCGGG8888888@@@
+GGGGCCCGGGG8888888@@@@
+Y8GGGGGG8888888@@@@P
+ `Y8888888@@@@@@@P'
+    `@@@@@@@@@P'
+______________________
+        """)
+        self.shake_ball()
+    def shake_ball(self):
+        shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
+            if shake_eight_ball = "Y"
+                room = random.randint(1,6)
+            else:
+                print("WHAT! Take a chance! Shake the ball!")
+                self.eight_ball_word()
+
+
     def death(self):
         print("You have died.")
         if "mushroom" in self.items:
@@ -38,3 +67,19 @@ class Game():
             print("clue start")
         if self.lastroom == "ladders":
             print("ladders start")
+
+    def ending_story(self):
+        print("""As you come too.. you realize your sitting in a chair with a book in your hand. Comfort overcomes you as your realize you are in the
+        bedroom of childs name. The child is at your side grabbing for what seems
+        to be a blanket. You hand over the blanket.
+        The child rubs their eyes and crawls back into bed. The child says, "Thank you
+        for the wonderful adventure story".
+        As the child tumbles into slumber... you begin to ask yourself about the
+        past events... You swore that blanket was in 5 pieces... that you were never ..not in danger of death... yet....
+        You hear a door open...YOU JUMP UP. Ready for a fight.. it's two human adults you recongize.
+        They are rushing towards you with... with..with money in their hands. Thank youing for getting
+        their child to sleep. Ushering you out the door and thank youing for a great
+        job of babysitting.
+        You look down at your hand with $75 in your hand and can only think of
+        the money you have now.
+        """)
