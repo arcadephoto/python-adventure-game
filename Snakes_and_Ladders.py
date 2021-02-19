@@ -1,4 +1,5 @@
 import random
+import Player from Player.py
 #import game info
 
 class snakes_and_ladders():
