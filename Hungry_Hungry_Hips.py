@@ -1,7 +1,23 @@
 import random
+
+class Player():
+    def __init__(self, name):
+        self.name = name
+        self.health = 10
+        self.lives = 3
+        self.items = []
+        self.blanket_pieces = 3
+
+        def death(self):
+            print("We need to some code for what happens if the character loses all three lives")
+
+
+
 class Hungry_hippos():
     def __init__(self):
+        self.hippo_attack = 3
         self.pearls = 0
+        self.hippo_pearls = 0
         self.hippo_story()
         self.play()
 
@@ -56,19 +72,35 @@ controlling your hippo.
             if quit == "Q":
                 break
             else:
-                player_action = input("""Player1 _ what would you like to do?
-                A. Jump
-                B. Run away
-                Please type A or B for your action: """)
-                if player_action == 'A':
-                    #depending on your strength this will work
-                    print("You jumped!")
-                     #may want to give this a the player?
-                    p1_pearl = random.randint(1, 9)
-                    self.pearls =  self.pearls + p1_pearl
-                    print(f"You now have {self.pearls}")
-                else:
-                    print("You coward..jump...JUMP!")
+                self.player_input()
+
+    def player_input(self):
+        player_action = input("""Player1 _ what would you like to do?
+        A. Jump
+        B. Run away
+        Please type A or B for your action: """)
+        if player_action == 'A':
+            #depending on your strength this will work
+            print("You jumped!")
+            self.battle_hippo()
+        else:
+            print("You coward..jump...JUMP!")
+
+    def battle_hippo(self):
+        if self.pearls < 9 and self.hippo_pearls < 9:
+            #may want to give this a the player?
+            p1_pearl = random.randint(1, 9)
+            self.pearls =  self.pearls + p1_pearl
+            hippo_pearl = random.randint(1, 3)
+            self.hippo_pearls =  self.hippo_pearls + hippo_pearl
+            print(f"Hippo now has {self.hippo_pearls}")
+            print(f"You now have {self.pearls}")
+        elif self.pearls > 9:
+            print("YOU HAVE WON!")
+            self.pearls = 10
+        elif self.hippo_pearls < 9:
+            print("YOU HAVE LOST!")
+            #player.health - self.hippo_attack
 
 
 Hungry_hippos()
