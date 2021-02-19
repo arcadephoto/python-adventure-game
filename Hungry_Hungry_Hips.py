@@ -168,12 +168,72 @@ controlling your hippo.
             Type A B or C""")
             if smooth_talk_choice == 'A':
                 self.pre_bossfight()
-                #random number guessing game
             elif smooth_talk_choice == 'B':
-                self.pre_bossfight()
-                #random choice pick of best compliment with inputs
+                self.compliment_game()
             else:
                 self.pre_bossfight()
+
+    def compliment_game(self):
+        print("You bat your eyelashes at the hippo and say...")
+        print(r"""
+
+    ／￣￣￣￣￣￣￣￣
+　　 |　...so I bet your favorite music is HIP...HOP......
+　　 ＼＿　 ＿＿＿＿＿＿
+　　　　　　　∨　　　　　　　　　　　　
+         O
+        /|\
+        / \ """)
+        print(r"""
+
+
+ ／￣￣￣￣￣￣￣￣
+ |　...whAT? Did you say?
+　 _＿＿＿＿＿＿
+　　∨ ,_,
+    (ʘ_ʘ) ----------_
+   (_._._)           |~'
+   `-----'           /
+     `|__|~-----~|__|""")
+
+        compliment_choice = input("The Hippo foruntley didn't hear you, what compliment would you like to say? ")
+        if "Nice" or "nice" or "hip" in compliment_choice:
+            print(r"""
+
+       @_______ ,_,
+       (       /ʘ"ʘ\
+        ||--||(_____)
+        '"  '"'-----'
+
+
+                   ／￣￣￣￣￣￣￣￣
+                   |　SMALL HUMAN...you amsume me!!
+                   \_ ＿＿＿＿
+               _.._  ∨
+              (.--.)
+       @______'\__/'
+       (       /~~\.
+        ||--||(.__.)
+        '"  '" ~~~~
+
+        You look an a piece of blanket appears in your left hand,
+        a rainbow pearl appears in you right hand""")
+        print("The rainbow pearl seems to be cracking...")
+            #self.player get a piece of blanket.
+            #ENTER HALLWAY TO TELEPORT OUT FUN
+        else:
+            print("""
+
+                   ／￣￣￣￣￣￣￣￣
+                   |　HOW DARE YOU!!!
+                   \_ ＿＿＿＿
+               _.._  ∨
+              (.--.)
+       @______'\__/'
+       (       /~~\.
+        ||--||(.__.)
+        '"  '" ~~~~  """)
+            self.pre_bossfight()
 
     def pre_bossfight(self):
         player_health = 5
@@ -234,3 +294,4 @@ controlling your hippo.
                 falling_pearls -= 1
 
 Hungry_hippos()
+#tame a hippo and busted thru a wall
