@@ -1,41 +1,42 @@
 import random
-import textwrap
 # import game
 
-class Player():
-    def __init__(self, name):
-        self.name = name
-        self.health = 10
-        self.lives = 3
-        self.items = []
-        self.blanket_pieces = 3
-        self.lastroom = ""
-
-    def death(self):
-        print("You have died.")
-        if "mushroom" in self.items:
-            self.items.remove("mushroom")
-            print("But what's this? You have the silver mushroom! The mushroom disappears from your hand and you find yourself back where you were.")
-            self.room()
-        if self.lives > 0:
-            self.lives = self.lives - 1
-            print("But what's this? It seems you have", self.lives, "more lives to give. Good luck!")
-            self.room()
-        if self.lives == 0:
-            print("You have died and in real life, unlike video games, there are no do overs. Now press RETURN to do over!")
-            print("game start command")
-
-    def room(self):
-        if self.lastroom == "connect":
-            four.column_one()
-        if self.lastroom == "hippo":
-            print("hippo start")
-        if self.lastroom == "simon":
-            print("simon start")
-        if self.lastroom == "clue":
-            print("clue start")
-        if self.lastroom == "ladders":
-            print("ladders start")
+# class Player():
+#     def __init__(self, name):
+#         self.name = name
+#         self.health = 10
+#         self.lives = 3
+#         self.items = []
+#         self.blanket_pieces = 0
+#         self.lastroom = ""
+#
+#     def death(self):
+#         print("You have died.")
+#         if "mushroom" in self.items:
+#             self.items.remove("mushroom")
+#             print('''But what's this? You have the silver mushroom! The mushroom
+#             disappears from your hand and you find yourself back where you were.''')
+#             self.room()
+#         if self.lives > 0:
+#             self.lives = self.lives - 1
+#             print("But what's this? It seems you have", self.lives, "more lives to give. Good luck!")
+#             self.room()
+#         if self.lives == 0:
+#             print('''You have died and in real life, unlike video games,
+#             there are no do overs. Now press RETURN to do over!''')
+#             print("game start command")
+#
+#     def room(self):
+#         if self.lastroom == "connect":
+#             four.column_one()
+#         if self.lastroom == "hippo":
+#             print("hippo start")
+#         if self.lastroom == "simon":
+#             print("simon start")
+#         if self.lastroom == "clue":
+#             print("clue start")
+#         if self.lastroom == "ladders":
+#             print("ladders start")
 
 
 
@@ -97,24 +98,28 @@ You pick up a stone, and the game begins.
 class Connect_room():
 
     def start(self):
+
         msg = (f'''
 
-You are alone. And then light. You're in a spotlight - a white pillar
-reaching up into the unfathomable darkness. Your breath ices in the
-freezing air. Motes of dust swirl in the light, drifting, then come to rest
-on the ground next to a suspicious splotch of crusty dried ooze.
-The once-gray floor is stained the color of rust. And the air smells of...
-fear? Despair?
+    You are alone. And then light. You're in a spotlight - a white pillar
+    reaching up into the unfathomable darkness. Your breath ices in the
+    freezing air. Motes of dust swirl in the light, drifting, then come to rest
+    on the ground next to a suspicious splotch of crusty dried ooze.
+    The once-gray floor is stained the color of rust. And the air smells of...
+    fear? Despair?
 
-No, the air smells like dead adventurer! Dead, crushed, minced, pureed,
-pulverized, and otherwise formerly living mincemeat pie of once-hopeful
-game player.
+    No, the air smells like dead adventurer! Dead, crushed, minced, pureed,
+    pulverized, and otherwise formerly living mincemeat pie of once-hopeful
+    game player.
 
-Let's hope you make better choices, {player1.name}.
+    Let's hope you make better choices, {player1.name}.
 
-    ''')
+        ''')
         print(msg)
-        self.star_msg()
+        if "mushroom" in player1.items:
+            four.connect_four()
+        else:
+            self.star_msg()
 
     def star_msg(self):
         print('''In the puddle of dried goo you spot a silvery glint. Would you like to investigate?''')
@@ -122,11 +127,11 @@ Let's hope you make better choices, {player1.name}.
             print("It's a toy tin mushroom! You pick it up and put it in your pocket")
             player1.items.insert(0, "mushroom")
             print("You have added the MUSHROOM BADGE.")
-#             print(player1.items)
+#           print(player1.items)
             four.connect_four()
         else:
             print("Just select Y, wise-ass.")
-            star_msg()
+            self.star_msg()
 
 
 
@@ -189,6 +194,7 @@ class Drop_game():
             print("It quickly adds, 'For you. If I win I win.'")
             self.play_again()
         elif self.wins == 2:
+            player1.blanket_pieces = player1.blanket_pieces + 1
             msg = '''
 
     The booming invisible voice echoes through the cavern: 'You have
@@ -196,9 +202,9 @@ class Drop_game():
 
     Before you, the pedestals and stones and blood and crushed remains of
     previous competitors fade away, leaving behind a simple wooden table atop
-    which sits a silver locket.
-    You take the locket in hand. It feels solid and well-made. You press
-    its latch, and it opens easily.
+    which sits the tattered shard of a child's blanket.
+    You take the shard in your hand. It's soft and warm and smells faintly
+    of Saturday morning cartoons and fabric softener.
     The world fades away around you...
 
     HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
