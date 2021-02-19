@@ -12,6 +12,8 @@ class Player():
 
 
 class Game():
+    def back_story(self):
+        print(f"You're babysitting the 3-year-old son of Inventor Lampton, whose Helicopter will revolutionize aviation. You are {self.name}, financial sponsor of the Helicopter, who will back anything—with his father's money. There is also Colonel Annesley, who wants the Helicopter for the U.S. Government.\n\n...but those people have absolutely nothing to do with this story. I just told you about them to make this intro a bit longer. :3\n\n")
 
     def eight_ball_word(self):
         print("""
