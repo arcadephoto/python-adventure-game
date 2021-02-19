@@ -30,6 +30,12 @@ What do you do?
         player_input = input("1. Leave the house \n2. Join the party\n")
 
     def second_choice(self):
+        self.second_choice_text()
+        player_input = input("1. Leave for another room.\n2. Roll the die\n")
+
+        self.guess_the_suspect(player_input)
+
+    def second_choice_text(self):
         print("The people there are discussing a murder, who did it, "
               "why, how that sort of thing. "
               "Turns out one of the people in that room did it."
@@ -41,15 +47,28 @@ What do you do?
         print("The only way to determine who the correct person is, "
               "is to roll the dice on the table.")
         print("What would you like to do?")
-        player_input = input("1. Leave for another room.\n2. Roll the die")
 
-        if player_input == str(1):
-            self.guesses = 0
-            print("Turns out the murderer was hanging out here, "
-                  "and decided to hit you in the head, and run away.")
-        elif player_input == str(2):
-            self.guesses -= 1
-            print(f"{self.guesses}", f"{self.suspect}", f"{self.murderer}")
+    def guess_the_suspect(self, player_input):
+        while self.guesses > 0:
+            if player_input == str(1):
+                self.game_over()
+            elif player_input == str(2):
+                self.show_suspects()
+        if self.suspect == self.murderer:
+            self.victory()
+
+    def victory(self):
+        print("Good job! You got the murderer, "
+              "call the cops right away!")
+
+    def show_suspects(self):
+        self.guesses -= 1
+        print(f"{self.guesses}", f"{self.suspect}", f"{self.murderer}")
+
+    def game_over(self):
+        self.guesses = 0
+        print("Turns out the murderer was hanging out here, "
+              "and decided to hit you in the head, and run away.")
 
     def area(self):
         player_input = input("1. Leave the house.\n2. Join the party\n")
