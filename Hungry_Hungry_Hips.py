@@ -175,18 +175,18 @@ controlling your hippo.
             else:
                 self.pre_bossfight()
 
-    def pre_bossfight():
-        player.health = 5
+    def pre_bossfight(self):
+        player_health = 5
         health_boost_choice = input("Would you like to use your golden pearl now? Y/N ")
         if health_boost_choice == "Y" or "Yes":
             print("Your health has been restored!")
-            player.health = 10
+            player_health = 10
             self.boss_fight()
         else:
-            print(f"Your health is at {player.health}")
+            print(f"Your health is at {player_health}")
             self.boss_fight()
 
-    def boss_fight():
+    def boss_fight(self):
         print("YOU HAVE ANGER THE HUNGRY HIPPO NOW HE IS HANGRY!!!!!")
         print(r"""
   .-''''-. _
@@ -212,8 +212,8 @@ controlling your hippo.
         To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
         falling_pearls = 5
         while falling_pearls != 0:
-            where_to_stand = input("Pick a tile 1-5 to dodge the falling pearl by typing 1, 2, 3, 4 or 5")
-            falling_pearl = random.randint(1,6)
+            where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, 3, 4 or 5"))
+            falling_pearl = random.randint(1,3)
             if where_to_stand == falling_pearl:
                 print("""
 
@@ -222,6 +222,7 @@ controlling your hippo.
 /|\
 / \
                 """)
+                falling_pearls -= 1
             else:
                 print("""
 
@@ -230,6 +231,6 @@ controlling your hippo.
 /|\  _     ●
 / \  ____
                 """)
+                falling_pearls -= 1
 
 Hungry_hippos()
-#tame a hippo and busted thru a wall
