@@ -1,5 +1,10 @@
 # should this go in here?
+import random
+from connect_four import Connect_room
+from connect_four import Drop_game
 
+connect = Connect_room()
+drop_game = Drop_game()
 
 class Player():
     def __init__(self, name):
@@ -9,25 +14,47 @@ class Player():
         self.items = []
         self.blanket_pieces = 0
         self.lastroom = ""
+        self.rooms_completed = []
+
+
+    # def death(self):
+    #     print("You have died.")
+    #     if "mushroom" in self.items:
+    #         self.items.remove("mushroom")
+    #         print("But what's this? You have the silver mushroom! The mushroom disappears from your hand and you find yourself back where you were.")
+    #         self.room()
+    #     if self.lives > 0:
+    #         self.lives = self.lives - 1
+    #         print("But what's this? It seems you have", self.lives, "more lives to give. Good luck!")
+    #         self.room()
+    #     if self.lives == 0:
+    #         print("You have died and in real life, unlike video games, there are no do overs. Now press RETURN to do over!")
+    #         print("game start command")
+
 
 
 class Game():
+
     def back_story(self):
         print(f"You're babysitting the 3-year-old son of Inventor Lampton, whose Helicopter will revolutionize aviation. You are {self.name}, financial sponsor of the Helicopter, who will back anything—with his father's money. There is also Colonel Annesley, who wants the Helicopter for the U.S. Government.\n\n...but those people have absolutely nothing to do with this story. I just told you about them to make this intro a bit longer. :3\n\nYou are reading the child a bedtime story and suddenly you get sucked into the book. In order to escape the book world, you must get 5 blanket pieces, which each exist in one respective room.\n\nAs you are now a fictional character, if you die in the book world, the universe will forever forget you and you will be erased from existence.")
 
 
 
+    def __init__(self):
+        self.player = Player('Bob')
+
+
     def death(self):
         print("You have died.")
-        if "mushroom" in self.items:
-            self.items.remove("mushroom")
+        if "mushroom" in self.player.items:
+            self.player.items.remove("mushroom")
             print("But what's this? You have the silver mushroom! The mushroom disappears from your hand and you find yourself back where you were.")
             self.room()
-        if self.lives > 0:
-            self.lives = self.lives - 1
-            print("But what's this? It seems you have", self.lives, "more lives to give. Good luck!")
+        if self.player.lives > 0:
+            self.player.lives = self.player.lives - 1
+            print("But what's this? It seems you have", self.player.lives, "more lives to give. Good luck!")
             self.room()
-        if self.lives == 0:
+        if self.player.lives == 0:
             print("You have died and in real life, unlike video games, there are no do overs. Now press RETURN to do over!")
             print("game start command")
 
@@ -156,3 +183,33 @@ class Game():
             else:
                 print("WHAT! Take a chance! Shake the ball!")
                 self.eight_ball_word()
+
+        if self.player.lastroom == "connect":
+            connect.start(self.player)
+
+        print('''You din't lose the connect ''')
+        # if self.lastroom == "hippo":
+        #     print("hippo start")
+        # if self.lastroom == "simon":
+        #     print("simon start")
+        # if self.lastroom == "clue":
+        #     print("clue start")
+        # if self.lastroom == "ladders":
+        #     print("ladders start")
+
+    def play(self):
+        print('playing game')
+
+        connect.start(self.player)
+        if not 'connect' in self.player.rooms_completed:
+            if self.player.health <= 0:
+                self.player.lastroom = "connect"
+                self.death()
+            else:
+                print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
+                drop_game.play_again(self.player)
+
+
+
+game = Game()
+game.play()
