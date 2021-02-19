@@ -6,6 +6,7 @@ class Game():
         self.row2 = [".", "_", "_", "_"]
         self.row3 = [".", "_", "_", "_"]
         self.game_over = False
+        self.blocked = ["_", "_", "_"]
 
 
     def drop(self, slot):
@@ -42,6 +43,10 @@ class Game():
         print(*self.row1, sep=" ")
         print(*self.row2, sep=" ")
         print(*self.row3, sep=" ")
+        if self.blocked == ["X", "X", "X"]:
+            print("All ways up are blocked. The horrible enemy is victorious!")
+            self.lost_game()
+            return;
         i = input("Pick a column, 1-3")
         self.drop(int(i))
 
@@ -55,6 +60,9 @@ class Game():
         i = random.randint(1, 3)
         print("The mysterious foe has chosen Column", i,".")
         print("A stone materializes in the air and drops into the game board")
+        if self.blocked[int(i-1)] == "_":
+            self.blocked[int(i-1)] = "X"
+        # print(self.blocked)
         self.computer_drop(int(i))
 
     def computer_drop(self, slot):
@@ -92,6 +100,7 @@ class Game():
         self.row1 = [".", "_", "_", "_"]
         self.row2 = [".", "_", "_", "_"]
         self.row3 = [".", "_", "_", "_"]
+        self.blocked = ["_", "_", "_"]
         self.activate_drop()
 
 
