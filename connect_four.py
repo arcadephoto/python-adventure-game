@@ -1,30 +1,46 @@
 import random
-# import Game
-# from Game import Player
-# from Game import player
-# import Player
-# import game
 
-class Player():
-    def __init__(self, name):
-        self.name = name
-        self.health = 10
-        self.lives = 3
-        self.items = []
-        self.blanket_pieces = 0
-        self.lastroom = ""
-        self.rooms_completed = []
+# class Player():
+#     def __init__(self, name):
+#         self.name = name
+#         self.health = 10
+#         self.lives = 3
+#         self.items = []
+#         self.blanket_pieces = 0
+#         self.lastroom = ""
+#         self.rooms_completed = []
+
 
 class Connect_four():
 
+
+    def enter(self, player):
+
+        msg = (f'''
+
+You're in a spotlight - a white pillar reaching into endless darkness.
+Your breath ices in the freezing air. Motes of dust swirl then come
+to rest on the ground next to a splotch of crusty dried viscera.
+
+It's the remains of a ead, crushed, minced, pureed, pulverized, and
+otherwise formerly living mincemeat pie of once-hopeful game player.
+
+Let's hope you make better choices, {player.name}.
+
+        ''')
+        print(msg)
+        self.connect_four(player)
+        #input continue here
+
+
     def connect_four(self, player):
         msg = """
-Ahead of you looms El Quatro, a stone structure reaching high into the darkness.
-It's a soaring tower with four parallelvvertical channels.
+Ahead of you looms El Quatro, a soaring stone tower with four vertical
+channels.
+
 In three of the channels, a massive stone disc has fallen and crushed
 the earth at the base of the tower. In the fourth channel stands a pedestal
 with your name on it.
-Heh heh heh.
 
 A voice booms from the darkness, 'Step up to your trial!'
               """
@@ -59,44 +75,6 @@ You pick up a stone, and the game begins.
                 """
         print(msg)
         self.activate_drop(player)
-
-
-
-    def start(self, player):
-
-        msg = (f'''
-
-    You are alone. And then light. You're in a spotlight - a white pillar
-    reaching up into the unfathomable darkness. Your breath ices in the
-    freezing air. Motes of dust swirl in the light, drifting, then come to rest
-    on the ground next to a suspicious splotch of crusty dried ooze.
-    The once-gray floor is stained the color of rust. And the air smells of...
-    fear? Despair?
-
-    No, the air smells like dead adventurer! Dead, crushed, minced, pureed,
-    pulverized, and otherwise formerly living mincemeat pie of once-hopeful
-    game player.
-
-    Let's hope you make better choices, {player.name}.
-
-        ''')
-        print(msg)
-        if "mushroom" in player.items:
-            self.connect_four(player)
-        else:
-            self.star_msg(player)
-
-    def star_msg(self, player):
-        print('''In the puddle of dried goo you spot a silvery glint. Would you like to investigate?''')
-        if (input("Investigate? ") == "y"):
-            print("It's a toy tin mushroom! You pick it up and put it in your pocket")
-            player.items.insert(0, "mushroom")
-            print("You have added the MUSHROOM BADGE.")
-#           print(player.items)
-            self.connect_four(player)
-        else:
-            print("Just select Y, wise-ass.")
-            self.star_msg(player)
 
 
     def __init__(self):
@@ -169,16 +147,12 @@ You pick up a stone, and the game begins.
     You take the shard in your hand. It's soft and warm and smells faintly
     of Saturday morning cartoons and fabric softener.
     The world fades away around you...
-
-    HERE IS THE FUNCTION TO TAKE THE PLAYER BACK TO THE HALLWAY")
             '''
             print(msg)
             player.blanket_pieces += 1
-
             player.rooms_completed = ['connect'] + player.rooms_completed
+            player.exit(player)
 
-        # if input("Play again?") == "y":
-        #     self.play_again()
 
 
     def computer_turn(self, player):
@@ -220,21 +194,26 @@ You pick up a stone, and the game begins.
     def lost_game(self, player):
         dmg = random.randint(1, 3)
         print("\n")
-        print("The massive stone plummets overhead. It strikes you, dealing", dmg, "points of damage!")
+        msg = (f'''
+    The massive stone plummets overhead. It strikes you, dealing
+    {dmg} points of damage!
+        ''')
+        print(msg)
         player.health = player.health - dmg
         if player.health <= 0:
-            print("You died!")
-        else:
-            print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
+            msg = '''
+    You died! But this is a video game, and you still haven't finished
+    your task, so try it again.
+            '''
+            print(msg)
             self.play_again(player)
-
-
-        # if player.health <= 0:
-        #     player.death()
-        #     player.lastroom = "connect"
-        # else:
-        #     print("You're hurt but, amazingly, you're still alive. If you ever want to return to the real world, you should try the game again.")
-        #     self.play_again(player)
+        else:
+            msg = '''
+    You're hurt but, amazingly, you're still alive. If you ever
+    want to return to the real world, you should try the game again.
+            '''
+            print(msg)
+            self.play_again(player)
         return
 
     def play_again(self, player):
@@ -245,10 +224,5 @@ You pick up a stone, and the game begins.
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop(player)
 
-# game = Game()
-# player = Player('Bob')
-# # four = Connect_four()
-# # drop_game = Drop_game() # mini game you're playing inside connect four
-# connect = Connect_four()
-# connect.start(player)
-# drop_game.lost_game()
+
+connect_four = Connect_four()
