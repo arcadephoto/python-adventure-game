@@ -119,14 +119,15 @@ class Game():
         `@@@@@@@@@P'
     ______________________
             """)
-            self.shake_ball()
-        def shake_ball(self):
-            shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
-            if shake_eight_ball == "Y":
-                room = random.randint(1,6)
-            else:
-                print("WHAT! Take a chance! Shake the ball!")
-                self.eight_ball_word()
+            # self.shake_ball()
+
+    def shake_ball(self):
+        shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
+        if shake_eight_ball == "Y":
+            room = random.randint(1,6)
+        else:
+            print("WHAT! Take a chance! Shake the ball!")
+            self.eight_ball_word()
 
         if self.player.lastroom == "connect":
             connect.start(self.player)
