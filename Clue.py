@@ -58,12 +58,14 @@ What do you do?
     def guess_the_suspect(self, player_input, player):
         while self.guesses > 0:
             if player_input == "1":
-                # self.health -= 1
+                player.health -= 1
                 self.game_over(player)
             elif player_input == "2":
                 self.show_suspects(player)
             if self.suspect == self.murderer:
                 self.victory(player)
+                player.blanket_pieces += 1
+                player.exit()
                 break
                 player_input = input("Would you like to play again? y/n")
                 if player_input == "y":
@@ -72,11 +74,12 @@ What do you do?
                     self.guesses <= 0
                     print("Goodbye! Hope you had fun!")
                     player.exit()
+                    player.blanket_pieces += 1
 
 
     def victory(self, player):
         print(f"Good job! You got the murderer, {self.murderer}"
-              "call the cops right away!")
+              " call the cops right away!")
         player.blanket_pieces += 1
         player.rooms_completed = ['clue'] + player.rooms_completed
         player.exit(player)
@@ -98,7 +101,7 @@ What do you do?
                     self.area(player)
                 else:
                     player.health -= 2
-                    print(f"Sorry, {self.murderer} got away, your {self.health} health now.")
+                    print(f"Sorry, {self.murderer} got away, your {player.health} health now.")
                     self.guesses = 0
                     player.rooms_completed = ['clue'] + player.rooms_completed
                     player.exit(player)
@@ -114,6 +117,7 @@ What do you do?
             self.guesses = 3
             print("YOU DIED...but your task wasn't complete! Try  again")
             player.health == 50
+            player.blanket_pieces += 1
             player.exit(player)
 
 
