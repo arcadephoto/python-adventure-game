@@ -6,6 +6,13 @@ from connect_four import connect_four
 # from Clue import Clue
 # from simon import Simon
 
+# =======
+# from connect_four import Connect_four
+# from Hungry_Hungry_Hips import Hungry_hippos
+# from Clue import Clue
+# from simon import Simon
+# from Snakes_and_Ladders import Snakes_and_ladders
+# >>>>>>> pulling saturdays update
 
 
 class Player():
@@ -83,10 +90,6 @@ class Player():
 player = Player('Player from Game.py')
 # game = Game()
 player.start_game(player)
-
-
-
-
 
 
 

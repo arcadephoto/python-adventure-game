@@ -116,6 +116,3 @@ class Snakes_and_ladders():
             print("the snake has won, you couldnt make it there in time!")
         if input("Play again?") == "y":
             self.playgame()
-
-
-snakes_and_ladders = Snakes_and_ladders()
