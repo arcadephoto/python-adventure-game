@@ -102,7 +102,7 @@ controlling your hippo.
 
             You have recived a golden pearl! """)
             print(f"{player.name}'s health is {player.health}")
-            player.items.push("golden-pearl")
+            player.items.append("golden-pearl")
             self.chance_to_smooth_talk(player)
         elif self.hippo_pearls >= 10:
             print("YOU HAVE LOST!")
