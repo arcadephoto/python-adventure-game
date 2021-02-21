@@ -4,6 +4,7 @@ from Hungry_Hungry_Hips import Hungry_hippos
 from Clue import Clue
 from simon import Simon
 from Snakes_and_Ladders import Snakes_and_ladders
+import sys
 
 # =======
 # from connect_four import Connect_four
@@ -44,79 +45,66 @@ class Player():
         self.eight_ball(player)
 
     def eight_ball(self, player):
-        # msg = '''
-        # This is the 8-ball function.
-        # We can definitely use Sarah's
-        # function. This is just a test.
-        # '''
-        # print(msg)
-        while self.blanket_pieces != 4 and self.health != 0:
+        while self.blanket_pieces != 5 and self.health != 0:
             i = random.randint(1, 5)
             if i == 1:
                 if "connect" not in self.rooms_completed:
-                    print("Connect Four")
                     Connect_four(player)
                 else:
                     self.eight_ball(player)
             elif i == 2:
-                print("Hippos")
                 if "hippos" not in self.rooms_completed:
-                    print("Entering Hippos")
                     Hungry_hippos(player)
                 else:
                     self.eight_ball(player)
             elif i == 3:
-                print("Clue")
                 if "clue" not in self.rooms_completed:
-                    print("Entering Clue")
                     Clue(player)
                 else:
                     self.eight_ball(player)
             elif i == 4:
-                print("Snakes")
                 if "snakes" not in self.rooms_completed:
-                    print("Entering Snakes and Ladders")
                     Snakes_and_ladders(player)
                 else:
                     self.eight_ball(player)
             elif i == 5:
-                print("Simon")
                 if "simon" not in self.rooms_completed:
-                    print("Entering Simon")
                     Simon(player)
                 else:
                     self.eight_ball(player)
             elif len(self.room_choice) == 5:
                 break
-        if self.blanket_pieces > 3:
-            print("You have WON!")
-            msg = '''
-            You have recovered the entire blanket, and now you can return
-            to the real world. Thanks for playing!
-            '''
-            print(msg)
-            return
-        elif self.health <= 0:
-            print("""You have failed at your babysitting duty!
+            if self.blanket_pieces > 4:
+                print("You have WON!")
+                self.won_the_game(player)
+                return
+            elif self.health <= 0:
+                print("""You have failed at your babysitting duty!
             Please continue your task to keep your job!
             """)
-            game_over_choice = input("Press Q to quit the game or press any other key to continue your jounrey! ").lower()
-            if game_over_choice == "q":
-                print(f"{self.babyname} will be without hisblanket forever.... Goodbye {self.name}...")
-            else:
-                self.health = 50
-                self.room_choice = []
-                self.start_game(player)
+                game_over_choice = input("Press Q to quit the game or press any other key to continue your journey! ").lower()
+                if game_over_choice == "q" or game_over_choice == "Q":
+                    print(f"{self.babyname} will be without hisblanket forever.... Goodbye {self.name}...")
+                else:
+                    self.health = 50
+                    self.room_choice = []
+                    self.start_game(player)
 
 
 
 
 
     def exit(self, player):
-            print("""
+        if self.blanket_pieces > 4:
+            print("You have WON!")
+            self.won_the_game(player)
+            return
+
+        print("""
+
     What seems to be a doorless hallway is in front of you.
     You walk down the hallway...approaching what seems to be
-    an eight ball...on a table?
+    an eight ball on a table.
 
            ******
         ,dP9CGG8888@b,
@@ -131,7 +119,7 @@ class Player():
         `@@@@@@@@@P'
     ______________________
             """)
-            self.shake_ball(player)
+        self.shake_ball(player)
 
     def shake_ball(self, player):
         shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
@@ -145,9 +133,13 @@ class Player():
 
 
 
-    # def won_the_game(self, player):
-        ##THIS IS WHERE THE END-GAME WILL GO. IT WILL BE TRIGGERED
-        ##BY LEN(SELF.ROOMS_COMPLETED) == 5
+    def won_the_game(self, player):
+        msg = '''
+        You have recovered the entire blanket, and now you can return
+        to the real world. Thanks for playing!
+        '''
+        print(msg)
+        sys.exit("Goodbye!")
 
 
 

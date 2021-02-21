@@ -65,7 +65,7 @@ What do you do?
             if self.suspect == self.murderer:
                 self.victory(player)
                 player.blanket_pieces += 1
-                player.exit()
+                player.exit(player)
                 break
                 player_input = input("Would you like to play again? y/n")
                 if player_input == "y":
@@ -73,7 +73,7 @@ What do you do?
                 else:
                     self.guesses <= 0
                     print("Goodbye! Hope you had fun!")
-                    player.exit()
+                    player.exit(player)
                     player.blanket_pieces += 1
 
 
