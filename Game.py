@@ -1,5 +1,5 @@
 import random
-from connect_four import connect
+from connect_four import Connect_four
 from Hungry_Hungry_Hips import Hungry_hippos
 from Clue import Clue
 from simon import Simon
@@ -44,7 +44,7 @@ class Player():
             if i == 1:
                 if "connect" not in self.rooms_completed:
                     print("Connect Four")
-                    connect.enter(player)
+                    Connect_four(player)
                 else:
                     self.eight_ball(player)
             elif i == 2:

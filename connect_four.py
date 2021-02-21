@@ -10,12 +10,20 @@ import random
 #         self.lastroom = ""
 #         self.rooms_completed = []
 
+# player = Player("Bob")
+
 
 class Connect_four():
 
-    # def __init__(self, player):
-    #         self.enter(player)
 
+    def __init__(self, player):
+        self.row1 = [".", "_", "_", "_", "_", "_"]
+        self.row2 = [".", "_", "_", "_", "_", "_"]
+        self.row3 = [".", "_", "_", "_", "_", "_"]
+        self.game_over = False
+        self.blocked = ["_", "_", "_", "_", "_"]
+        self.wins = 0
+        self.enter(player)
 
     def enter(self, player):
 
@@ -80,13 +88,7 @@ You pick up a stone, and the game begins.
         self.activate_drop(player)
 
 
-    def __init__(self):
-        self.row1 = [".", "_", "_", "_", "_"]
-        self.row2 = [".", "_", "_", "_", "_"]
-        self.row3 = [".", "_", "_", "_", "_"]
-        self.game_over = False
-        self.blocked = ["_", "_", "_", "_"]
-        self.wins = 0
+
 
 
     def drop(self, slot, player):
@@ -123,12 +125,16 @@ You pick up a stone, and the game begins.
         print(*self.row1, sep=" ")
         print(*self.row2, sep=" ")
         print(*self.row3, sep=" ")
-        if self.blocked == ["X", "X", "X", "X"]:
+        if self.blocked == ["X", "X", "X", "X", "X"]:
             print("All ways up are blocked. The horrible enemy is victorious!")
             self.lost_game(player)
             return;
-        i = input("Pick a column, 1-4:   ")
-        self.drop(int(i), player)
+        i = input("Pick a column, 1-5:   ")
+        if i in (["1", "2", "3", "4", "5"]):
+            self.drop(int(i), player)
+        else:
+            print("Close, but try again.")
+            self.activate_drop(player)
 
     def win_game(self, player):
         self.wins = self.wins + 1
@@ -160,7 +166,7 @@ You pick up a stone, and the game begins.
 
     def computer_turn(self, player):
         if self.game_over == False:
-            i = random.randint(1, 4)
+            i = random.randint(1, 5)
             print("The mysterious foe has chosen Column", i,".")
             print("A stone materializes in the air and drops into the game board")
             if self.blocked[int(i-1)] == "_":
@@ -173,7 +179,7 @@ You pick up a stone, and the game begins.
                 self.row3[slot] = "X"
             elif self.row2[slot] == "_":
                 self.row2[slot] = "X"
-                if self.row2 == [".", "X", "X", "X", "X"]:
+                if self.row2 == [".", "X", "X", "X", "X", "X"]:
                     print("Oh no! The cruel enemy has blocked all your moves. You lost!")
                     self.game_over = True
                     self.lost_game(player)
@@ -181,13 +187,16 @@ You pick up a stone, and the game begins.
             elif self.row1[slot] == "_":
                 self.row1[slot] = "X"
                 print("Your foe has blocked column", slot, "!")
-                if self.row2 == [".", "X", "X", "X", "X"]:
+                if self.row2 == [".", "X", "X", "X", "X", "X"]:
                     print("Oh no! The cruel enemy has blocked all your moves. You lost!")
                     self.game_over = True
                     self.lost_game(player)
                     return
             else:
                 print("That row was occupied, so the enemy chooses again. What a jerk!")
+                self.computer_turn(player)
+            if random.randint(1,3) == 3:
+                print("Your opponent takes a free turn. What a cheater!")
                 self.computer_turn(player)
             if self.game_over == False:
                 print("\n")
@@ -221,9 +230,11 @@ You pick up a stone, and the game begins.
 
     def play_again(self, player):
         self.game_over = False
-        self.row1 = [".", "_", "_", "_", "_"]
-        self.row2 = [".", "_", "_", "_", "_"]
-        self.row3 = [".", "_", "_", "_", "_"]
-        self.blocked = ["_", "_", "_", "_"]
+        self.row1 = [".", "_", "_", "_", "_", "_"]
+        self.row2 = [".", "_", "_", "_", "_", "_"]
+        self.row3 = [".", "_", "_", "_", "_", "_"]
+        self.blocked = ["_", "_", "_", "_", "_"]
         self.activate_drop(player)
-connect = Connect_four()
+
+# connect = Connect_four(player)
+# connect.enter(player)
