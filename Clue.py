@@ -71,6 +71,7 @@ What do you do?
                 else:
                     self.guesses <= 0
                     print("Goodbye! Hope you had fun!")
+                    player.exit()
 
 
     def victory(self, player):
@@ -109,7 +110,6 @@ What do you do?
         player_input = input("Would you like to play again? y/n")
         if player_input == "y":
             self.area(player)
-            player.exit(player)
         else:
             self.guesses = 3
             print("YOU DIED...but your task wasn't complete! Try  again")
