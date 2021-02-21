@@ -28,17 +28,28 @@ class Player():
 #ending story
     def start_game(self, player):
         self.name = input("Welcome to the game, please type your name and then hit enter: ")
-        print(f"You're babysitting the 3-year-old {self.babyname} of Inventor Lampton, whose Helicopter will revolutionize aviation. You are {self.name}, financial sponsor of the Helicopter, who will back anything—with his father's money. There is also Colonel Annesley, who wants the Helicopter for the U.S. Government.\n\n...but those people have absolutely nothing to do with this story. I just told you about them to make this intro a bit longer. :3\n\nYou are reading the child a bedtime story and suddenly you get sucked into the book. In order to escape the book world, you must get 5 blanket pieces, which each exist in one respective room.\n\nAs you are now a fictional character, if you die in the book world, the universe will forever forget you and you will be erased from existence.")
+        msg = (f'''You're {self.name}, babysitting the 3-year-old {self.babyname} of Inventor
+    Lampton, whose miniaturizaton ray will change the world.
+
+    You are reading the child a bedtime story when you are suddenly
+    miniaturized into the world of toys and games.
+    In order to escape the toy world, you must win the games and collect
+    your prizes: five pieces of a child's blanket.
+
+    You feel yourself being pulled into a game...
+
+    ''')
+        print(msg)
 
         self.eight_ball(player)
 
     def eight_ball(self, player):
-        msg = '''
-        This is the 8-ball function.
-        We can definitely use Sarah's
-        function. This is just a test.
-        '''
-        print(msg)
+        # msg = '''
+        # This is the 8-ball function.
+        # We can definitely use Sarah's
+        # function. This is just a test.
+        # '''
+        # print(msg)
         while self.blanket_pieces != 5 and self.health != 0:
             i = random.randint(1, 5)
             if i == 1:

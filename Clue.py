@@ -19,7 +19,7 @@ class Clue:
 
     def start(self, player):
         print(f"""
-Welcome {self.player.name}! hear a door close behind you as you open your eyes.
+Welcome {player.name}! hear a door close behind you as you open your eyes.
 You are in a room with 5 people.
 It looks like they are having a party.
 What do you do?
