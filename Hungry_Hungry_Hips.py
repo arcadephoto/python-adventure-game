@@ -67,9 +67,6 @@ controlling your hippo.
 """)
 
     def play(self, player):
-        print('refiring play method')
-
-
 
         while self.pearls < 10 and self.hippo_pearls < 10:
             quit = input("Q to Quit. Anyother key to continiue : ")
@@ -134,7 +131,7 @@ controlling your hippo.
     def battle_hippo(self, player):
         # if self.pearls < 9 and self.hippo_pearls < 9:
             #may want to give this a the player?
-            p1_pearl = random.randint(1, 2)
+            p1_pearl = random.randint(1, 9)
             self.pearls =  self.pearls + p1_pearl
             hippo_pearl = random.randint(1, 9)
             self.hippo_pearls =  self.hippo_pearls + hippo_pearl
@@ -284,7 +281,7 @@ controlling your hippo.
         print("""You must dodge the falling pearls!
         The pearls are falling in tile spaces 1-5..
         To successfully dodge the pearls you must be in the tile space the pearl does not fall on!""")
-        falling_pearls = 10
+        falling_pearls = 4
         while falling_pearls != 0:
             # try:
             where_to_stand = int(input("Pick a tile 1-3 to dodge the falling pearl by typing 1, 2, or 3"))
