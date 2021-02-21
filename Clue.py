@@ -68,7 +68,6 @@ What do you do?
                 player_input = input("Would you like to play again? y/n")
                 if player_input == "y":
                     self.area(player)
-
                 else:
                     self.guesses <= 0
                     print("Goodbye! Hope you had fun!")
@@ -97,7 +96,10 @@ What do you do?
                 if player_input == "y":
                     self.area(player)
                 else:
+                    player.health -= 2
+                    print(f"Sorry, {self.murderer} got away, your {self.health} health now.")
                     self.guesses = 0
+                    player.rooms_completed = ['clue'] + player.rooms_completed
                     player.exit(player)
 
     def game_over(self, player):
