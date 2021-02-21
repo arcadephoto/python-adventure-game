@@ -39,45 +39,45 @@ class Player():
         function. This is just a test.
         '''
         print(msg)
-        while self.blanket_pieces < 5 or self.health > 0:
+        while self.blanket_pieces < 5:
             i = random.randint(1, 5)
             if i == 1:
-                if "connect" not in player.rooms_completed:
+                if "connect" not in self.rooms_completed:
                     print("Connect Four")
                     connect.enter(player)
                 else:
                     self.eight_ball(player)
             elif i == 2:
                 print("Hippos")
-                if "hippos" not in player.rooms_completed:
+                if "hippos" not in self.rooms_completed:
                     print("Entering Hippos")
                     Hungry_hippos(player)
                 else:
                     self.eight_ball(player)
             elif i == 3:
                 print("Clue")
-                if "clue" not in player.rooms_completed:
+                if "clue" not in self.rooms_completed:
                     print("Entering Clue")
                     Clue(player)
                 else:
                     self.eight_ball(player)
             elif i == 4:
                 print("Snakes")
-                if "snakes" not in player.rooms_completed:
+                if "snakes" not in self.rooms_completed:
                     print("Entering Snakes and Ladders")
                     Snakes_and_ladders(player)
                 else:
                     self.eight_ball(player)
             elif i == 5:
                 print("Simon")
-                if "simon" not in player.rooms_completed:
+                if "simon" not in self.rooms_completed:
                     print("Entering Simon")
                     Simon(player)
                 else:
                     self.eight_ball(player)
         if self.blanket_pieces == 4:
             print("You have WON!")
-        elif self.health == 0:
+        elif self.health <= 0:
             print("""You have failed at your babysitting duty!
             Please continue your task to keep your job!
             """)

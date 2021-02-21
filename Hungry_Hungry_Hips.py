@@ -334,6 +334,7 @@ controlling your hippo.
         else:
             print(f"{player.name}'s health is {player.health}")
             print("YOU DIED...but your task wasn't complete! Try  again")
+            player.health = 0
             player.eight_ball(player)
 
             #do something if they die
