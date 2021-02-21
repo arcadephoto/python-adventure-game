@@ -1,10 +1,8 @@
-
 import random
 from connect_four import connect_four
-
-# from Hungry_Hungry_Hips import Hungry_hippos
-# from Clue import Clue
-# from simon import Simon
+from Hungry_Hungry_Hips import Hungry_hippos
+from Clue import Clue
+from simon import Simon
 
 # =======
 # from connect_four import Connect_four
@@ -41,42 +39,80 @@ class Player():
         function. This is just a test.
         '''
         print(msg)
-        i = random.randint(1, 5)
-        if i == 1:
-            if "connect" not in player.rooms_completed:
-                print("Connect Four")
-                connect_four.enter(player)
-            else:
-                self.eight_ball(player)
-        if i == 2:
-            print("Hippos")
-            #hungry_hungry_hips.enter(player)
-        if i == 3:
-            print("Clue")
-            #clue.enter(player)
-        if i == 4:
-            print("Snakes and Ladders")
-            #snakes_and_ladders.enter(player)
-        if i == 5:
-            print("Simon")
-            #simon.enter(player)
+        while player.blanket_pieces < 4:
+            i = random.randint(1, 5)
+            if i == 1:
+                if "connect" not in player.rooms_completed:
+                    print("Connect Four")
+                    connect_four.enter(player)
+                else:
+                    self.eight_ball(player)
+            elif i == 2:
+                print("Hippos")
+                if "hippos" not in player.rooms_completed:
+                    print("Entering Hippos")
+                    Hungry_hippos(player)
+                else:
+                    self.eight_ball(player)
+            elif i == 3:
+                print("Clue")
+                if "clue" not in player.rooms_completed:
+                    print("Entering Clue")
+                    Clue(player)
+                else:
+                    self.eight_ball(player)
+            elif i == 4:
+                print("Clue")
+                if "clue" not in player.rooms_completed:
+                    print("Entering Clue")
+                    Clue(player)
+                else:
+                    self.eight_ball(player)
+            elif i == 5:
+                print("Simon")
+                if "simon" not in player.rooms_completed:
+                    print("Entering Simon")
+                    Simon(player)
+                else:
+                    self.eight_ball(player)
+        else:
+            print("You have WON!")
 
 
     def exit(self, player):
-        msg = '''
-    THIS IS WHERE YOU GO AFTER WINNING A GAME.
-    It fires the 8 ball routine again, but this time the
-    rooms_completed attribute should keep the player from
-    going to the same game twice.
-    Press any key to contiue.
-    input()
-    '''
-        print(msg)
-        self.eight_ball(player)
+            print("""
+    What seems to be a doorless hallway is in front of you.
+    You walk down the hallway...approaching what seems to be
+    an eight ball...on a table?
+
+           ******
+        ,dP9CGG8888@b,
+      ,IP  _   Y88888@@b,
+     dIi  (_)   G888898@b
+    dCII  (_)   G888888@@b
+    GCCIi     ,GG888888@@@
+    GGCCCCCCCGGG8888888@@@
+    GGGGCCCGGGG8888888@@@@
+    Y8GGGGGG8888888@@@@P
+     `Y8888888@@@@@@@P'
+        `@@@@@@@@@P'
+    ______________________
+            """)
+            self.shake_ball(player)
+
+    def shake_ball(self, player):
+        shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
+        if shake_eight_ball == "Y":
+            self.eight_ball(player)
+        else:
+            print("WHAT! Take a chance! Shake the ball!")
+            self.eight_ball(player)
 
 
 
-    def won_the_game(self, player):
+
+
+    # def won_the_game(self, player):
         ##THIS IS WHERE THE END-GAME WILL GO. IT WILL BE TRIGGERED
         ##BY LEN(SELF.ROOMS_COMPLETED) == 5
 
@@ -87,7 +123,7 @@ class Player():
 
 
 
-player = Player('Player from Game.py')
+player = Player('Bob')
 # game = Game()
 player.start_game(player)
 
@@ -164,34 +200,7 @@ player.start_game(player)
     #
     #
     #
-    # def eight_ball_word(self):
-    #         print("""
-    # What seems to be a doorless hallway is in front of you.
-    # You walk down the hallway...approaching what seems to be
-    # an eight ball...on a table?
-    #
-    #        ******
-    #     ,dP9CGG8888@b,
-    #   ,IP  _   Y88888@@b,
-    #  dIi  (_)   G888898@b
-    # dCII  (_)   G888888@@b
-    # GCCIi     ,GG888888@@@
-    # GGCCCCCCCGGG8888888@@@
-    # GGGGCCCGGGG8888888@@@@
-    # Y8GGGGGG8888888@@@@P
-    #  `Y8888888@@@@@@@P'
-    #     `@@@@@@@@@P'
-    # ______________________
-    #         """)
-    #         # self.shake_ball()
-    #
-    # def shake_ball(self):
-    #     shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
-    #     if shake_eight_ball == "Y":
-    #         room = random.randint(1,6)
-    #     else:
-    #         print("WHAT! Take a chance! Shake the ball!")
-    #         self.eight_ball_word()
+
     #
     #     if self.player.lastroom == "connect":
     #         connect.start(self.player)

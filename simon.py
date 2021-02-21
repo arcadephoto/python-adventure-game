@@ -46,7 +46,7 @@ class Simon():
                         player.health -= 1
                         if player.health <= 0:
                             print("You died resulting from electric shock.")
-                            exit()
+                            player.exit(player)
                         else:
                             repeat = True
                             break
@@ -56,5 +56,7 @@ class Simon():
                     list_of_numbers.clear()
         print("Dr. Longnameovich: Ah! I'm astounded! You actually won! Well, then, indeed I have learned a lot about the condition of scolactomemorandizitis. Here, I will give you this blanket piece. You may now be on your way!\n\n(Oh by the way, due to your condition and your age, you have 3 days left to live. Just a heads up...)")
         player.blanket_pieces += 1
+        player.rooms_completed = ['simon'] + player.rooms_completed
+        player.exit(player)
 
 # simon = Simon()

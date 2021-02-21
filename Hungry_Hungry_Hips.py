@@ -18,10 +18,10 @@ class Hungry_hippos():
         self.hippo_attack = 3
         self.pearls = 0
         self.hippo_pearls = 0
-        self.hippo_story(player)
+        self.enter(player)
         self.play(player)
 
-    def hippo_story(self, player):
+    def enter(self, player):
 
         print(f"""
 {player.name} open your eyes but you are surround by darkness... as you
@@ -328,11 +328,14 @@ controlling your hippo.
         """)
             print(f"{player.name}'s health is {player.health}")
             player.blanket_pieces += 1
+            player.rooms_completed = ['hippos'] + player.rooms_completed
+            player.exit(player)
 
         else:
             print(f"{player.name}'s health is {player.health}")
-            print("GAME OVER YOU DIED...lol")
-
+            print("YOU DIED...but your task wasn't complete! Try  again")
+            player.health == 50
+            pre_bossfight(player)
 
             #do something if they die
 #tame a hippo and busted thru a wall
