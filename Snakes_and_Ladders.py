@@ -3,17 +3,17 @@ import random
 
 class Snakes_and_ladders():
 
-    def __init__(self):
+    def __init__(self, player):
         self.player1Pos = 1
         self.snakePos = 1
         self.dice_value = 0
-        self.welcome_msg()
+        self.welcome_msg(player)
 
 
 
 
-    def welcome_msg(self):
-        msg = """
+    def welcome_msg(self, player):
+        msg = f"""
         Welcome to Snakes and Ladders.
 
 
@@ -28,18 +28,18 @@ class Snakes_and_ladders():
         """
         print(msg)
 
-        self.playgame()
+        self.playgame(player)
 
-    def roll(self):
+    def roll(self, player):
         min = 1
         max = 7
         return random.randint(min, max)
 
 
-    def roll_the_dice(self):
+    def roll_the_dice(self, player):
         player_roll = input("press r to roll the dice or q to quit")
         if player_roll == "r":
-            self.dice_value = self.roll()
+            self.dice_value = self.roll(player)
             print(f"you rolled a {self.dice_value}")
         else:
             print("ok")
@@ -51,7 +51,7 @@ class Snakes_and_ladders():
 #7,13 plus 1
 #9,19
 
-    def snake_play(self):
+    def snake_play(self, player):
         self.snakePos = self.snakePos + self.dice_value
         if self.snakePos == 2 or self.snakePos == 6 or self.snakePos == 7 or self.snakePos == 10 or self.snakePos == 12 or self.snakePos == 14 or self.snakePos == 16:
             print("snake is safe here... for now")
@@ -76,7 +76,7 @@ class Snakes_and_ladders():
 
 
 
-    def player_play(self):
+    def player_play(self, player):
         self.player1Pos = self.player1Pos + self.dice_value
 
         print(f"Bob postions is {self.player1Pos} and snake is at { self.snakePos} ")
@@ -101,18 +101,26 @@ class Snakes_and_ladders():
         else:
             print("try to make it to the end before the snakey boy does!")
 
-    def playgame(self):
-        self.roll_the_dice()
+    def playgame(self, player):
+        self.roll_the_dice(player)
         if self.player1Pos < 20 and self.snakePos < 20:
-            self.player_play()
+            self.player_play(player)
             print(f"you are at position {self.player1Pos}")
-            self.snake_play()
+            self.snake_play(player)
             print(f"snake is at position {self.snakePos}")
-            self.playgame()
+            self.playgame(player)
         elif self.player1Pos > 19:
-            print("you win")
+            print("YOU WIN!!!")
+            player.exit(player)
             player.blanket_pieces += 1
+            player.rooms_completed = ['connect'] + player.rooms_completed
         elif self.snakePos > 19:
             print("the snake has won, you couldnt make it there in time!")
         if input("Play again?") == "y":
-            self.playgame()
+            self.player1Pos = 1
+            self.snakePos = 1
+            self.dice_value = 0
+            self.playgame(player)
+
+# snakes = Snakes_and_ladders(player)
+# snakes.welcome_msg(player)

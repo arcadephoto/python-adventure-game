@@ -3,6 +3,7 @@ from connect_four import connect
 from Hungry_Hungry_Hips import Hungry_hippos
 from Clue import Clue
 from simon import Simon
+from Snakes_and_Ladders import Snakes_and_ladders
 
 # =======
 # from connect_four import Connect_four
@@ -63,10 +64,10 @@ class Player():
                 else:
                     self.eight_ball(player)
             elif i == 4:
-                print("Clue")
-                if "clue" not in player.rooms_completed:
-                    print("Entering Clue")
-                    Clue(player)
+                print("Snakes")
+                if "snakes" not in player.rooms_completed:
+                    print("Entering Snakes and Ladders")
+                    Snakes_and_ladders(player)
                 else:
                     self.eight_ball(player)
             elif i == 5:
