@@ -50,7 +50,7 @@ class Player():
         # function. This is just a test.
         # '''
         # print(msg)
-        while self.blanket_pieces != 5 and self.health != 0:
+        while self.blanket_pieces != 4 and self.health != 0:
             i = random.randint(1, 5)
             if i == 1:
                 if "connect" not in self.rooms_completed:
@@ -88,8 +88,14 @@ class Player():
                     self.eight_ball(player)
             elif len(self.room_choice) == 5:
                 break
-        if self.blanket_pieces == 5:
+        if self.blanket_pieces > 3:
             print("You have WON!")
+            msg = '''
+            You have recovered the entire blanket, and now you can return
+            to the real world. Thanks for playing!
+            '''
+            print(msg)
+            return
         elif self.health <= 0:
             print("""You have failed at your babysitting duty!
             Please continue your task to keep your job!
@@ -129,7 +135,7 @@ class Player():
 
     def shake_ball(self, player):
         shake_eight_ball = input("Would you like to shake the eight ball? Y/N ")
-        if shake_eight_ball == "Y":
+        if shake_eight_ball == "Y" or shake_eight_ball == "y":
             self.eight_ball(player)
         else:
             print("WHAT! Take a chance! Shake the ball!")

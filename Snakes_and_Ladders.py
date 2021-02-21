@@ -110,9 +110,9 @@ class Snakes_and_ladders():
             self.playgame(player)
             if self.player1Pos >= 20:
                 print("YOU WIN!!!")
-                player.exit(player)
                 player.blanket_pieces += 1
                 player.rooms_completed = ['snakes'] + player.rooms_completed
+                player.exit(player)
             elif self.snakePos >= 20:
                 print("the snake has won, you couldnt make it there in time!")
                 if input("Play again?") == "y":
