@@ -50,6 +50,7 @@ class Player():
                 print(f"{self.babyname} will be without hisblanket forever.... Goodbye {self.name}...")
             else:
                 self.health = 50
+                self.room_choice = []
                 self.start_game(player)
         else:
             while self.blanket_pieces < 5 or self.health <= 0:
