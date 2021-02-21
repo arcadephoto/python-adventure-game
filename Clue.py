@@ -66,14 +66,13 @@ What do you do?
                 self.victory(player)
                 break
                 player_input = input("Would you like to play again? y/n")
-
                 if player_input == "y":
                     self.area(player)
-                    break
+
                 else:
-                    self.guesses = 0
+                    self.guesses <= 0
                     print("Goodbye! Hope you had fun!")
-                    break
+
 
     def victory(self, player):
         print(f"Good job! You got the murderer, {self.murderer}"
@@ -106,7 +105,6 @@ What do you do?
         print(f"Turns out the murderer {self.murderer} was hanging out here, "
               "and decided to hit you in the head, and run away.")
         player_input = input("Would you like to play again? y/n")
-
         if player_input == "y":
             self.area(player)
             player.exit(player)
