@@ -1,5 +1,5 @@
 import random
-from connect_four import connect_four
+from connect_four import connect
 from Hungry_Hungry_Hips import Hungry_hippos
 from Clue import Clue
 from simon import Simon
@@ -22,7 +22,8 @@ class Player():
         self.blanket_pieces = 0
         self.lastroom = ""
         self.rooms_completed = []
-
+#welcome to the game... whats the players name
+#ending story
     def start_game(self, player):
         msg = '''
         THIS IS THE WELCOME SCREEN. It's the first thing the player sees.
@@ -44,7 +45,7 @@ class Player():
             if i == 1:
                 if "connect" not in player.rooms_completed:
                     print("Connect Four")
-                    connect_four.enter(player)
+                    connect.enter(player)
                 else:
                     self.eight_ball(player)
             elif i == 2:

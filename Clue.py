@@ -64,10 +64,12 @@ What do you do?
                 self.show_suspects(player)
             if self.suspect == self.murderer:
                 self.victory(player)
+                break
                 player_input = input("Would you like to play again? y/n")
 
                 if player_input == "y":
                     self.area(player)
+                    break
                 else:
                     self.guesses = 0
                     print("Goodbye! Hope you had fun!")

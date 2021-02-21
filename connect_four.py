@@ -13,6 +13,9 @@ import random
 
 class Connect_four():
 
+    # def __init__(self, player):
+    #         self.enter(player)
+
 
     def enter(self, player):
 
@@ -223,6 +226,4 @@ You pick up a stone, and the game begins.
         self.row3 = [".", "_", "_", "_", "_"]
         self.blocked = ["_", "_", "_", "_"]
         self.activate_drop(player)
-
-
-connect_four = Connect_four()
+connect = Connect_four()

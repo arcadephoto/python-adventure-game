@@ -335,7 +335,7 @@ controlling your hippo.
             print(f"{player.name}'s health is {player.health}")
             print("YOU DIED...but your task wasn't complete! Try  again")
             player.health == 50
-            pre_bossfight(player)
+            self.pre_bossfight(player)
 
             #do something if they die
 #tame a hippo and busted thru a wall

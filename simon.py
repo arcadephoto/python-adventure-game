@@ -17,7 +17,7 @@ class Simon():
         lost = False
         while 1:
             repeat = False
-            if difficulty == 5:
+            if difficulty == 2:
                 break
             else:
                 if not lost:
@@ -31,17 +31,17 @@ class Simon():
                     random_number = random.randint(1, 4)
                     list_of_numbers.append(random_number)
                     print(f"                              {random_number}")
-                    time.sleep(2)
+                    time.sleep(1)
                     for enter in range(5000):
                         print("\n")
                 for number in range(len(list_of_numbers)):
                     prompt = input(f"Dr. Longnameovich: Please repeat each number back to me. ")
                     if int(prompt) == list_of_numbers[number]:
                         print("Dr. Longnameovich: Hmmm, very good!")
-                        time.sleep(2)
+                        time.sleep(1)
                     else:
                         print("Dr. Longnameovich: Why, you got one wrong. BZZZZZRRRTTT!!")
-                        time.sleep(2)
+                        time.sleep(1)
                         lost = True
                         player.health -= 1
                         if player.health <= 0:
