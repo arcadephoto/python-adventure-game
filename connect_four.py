@@ -144,7 +144,6 @@ You pick up a stone, and the game begins.
             self.play_again(player)
         elif self.wins == 2:
             self.game_over = True
-            player.blanket_pieces = player.blanket_pieces + 1
             msg = '''
 
     The booming invisible voice echoes through the cavern: 'You have
