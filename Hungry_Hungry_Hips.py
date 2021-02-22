@@ -223,6 +223,9 @@ controlling your hippo.
 
         You look an a piece of blanket appears in your left hand,
         a rainbow pearl appears in you right hand""")
+        player.blanket_pieces += 1
+        player.rooms_completed = ['hippos'] + player.rooms_completed
+        player.exit(player)
         else:
             print("The rainbow pearl seems to be cracking...")
             # self.player get a piece of blanket.

@@ -74,7 +74,7 @@ class Player():
                     self.eight_ball(player)
             elif len(self.room_choice) == 5:
                 break
-            if self.blanket_pieces > 4:
+            if self.blanket_pieces >= 5:
                 print("You have WON!")
                 self.won_the_game(player)
                 return
@@ -95,7 +95,7 @@ class Player():
 
 
     def exit(self, player):
-        if self.blanket_pieces > 4:
+        if self.blanket_pieces >= 5:
             print("You have WON!")
             self.won_the_game(player)
             return
